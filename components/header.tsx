@@ -21,36 +21,194 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-// Category data
+// Category data with detailed subcategories
 const categories = [
   {
     name: "Men",
     href: "/shop/men",
     subcategories: [
-      { name: "Casual Wear", href: "/shop/men/casual-wear" },
-      { name: "Formal Wear", href: "/shop/men/formal-wear" },
-      { name: "Oversized Fit", href: "/shop/men/oversized-fit" },
-      { name: "Innerwear", href: "/shop/men/innerwear" },
-      { name: "Footwear", href: "/shop/men/footwear" },
-      { name: "Accessories", href: "/shop/men/accessories" },
-      { name: "Western Wear", href: "/shop/men/western-wear" },
+      {
+        name: "Casual Wear",
+        href: "/shop/men/casual-wear",
+        subItems: [
+          { name: "Shirts", href: "/shop/men/casual-wear/shirts" },
+          { name: "Pants", href: "/shop/men/casual-wear/pants" },
+          { name: "T-Shirts", href: "/shop/men/casual-wear/t-shirts" },
+        ],
+      },
+      {
+        name: "Formal Wear",
+        href: "/shop/men/formal-wear",
+        subItems: [
+          { name: "Shirts", href: "/shop/men/formal-wear/shirts" },
+          { name: "Pants", href: "/shop/men/formal-wear/pants" },
+        ],
+      },
+      {
+        name: "Oversized Fit",
+        href: "/shop/men/oversized-fit",
+        subItems: [
+          { name: "Shirts", href: "/shop/men/oversized-fit/shirts" },
+          { name: "Pants", href: "/shop/men/oversized-fit/pants" },
+          { name: "Polo T-Shirts", href: "/shop/men/oversized-fit/polo-t-shirts" },
+          { name: "Round Neck T-Shirts", href: "/shop/men/oversized-fit/round-neck-t-shirts" },
+          { name: "Hoodies", href: "/shop/men/oversized-fit/hoodies" },
+        ],
+      },
+      {
+        name: "Innerwear",
+        href: "/shop/men/innerwear",
+        subItems: [
+          { name: "Vests", href: "/shop/men/innerwear/vests" },
+          { name: "Gym Vests", href: "/shop/men/innerwear/gym-vests" },
+          { name: "Briefs", href: "/shop/men/innerwear/briefs" },
+          { name: "Trunkers", href: "/shop/men/innerwear/trunkers" },
+        ],
+      },
+      {
+        name: "Footwear",
+        href: "/shop/men/footwear",
+        subItems: [
+          { name: "Casual Shoes", href: "/shop/men/footwear/casual-shoes" },
+          { name: "Flip Flops & Slippers", href: "/shop/men/footwear/flip-flops-slippers" },
+          { name: "Formal Shoes", href: "/shop/men/footwear/formal-shoes" },
+          { name: "Sandals", href: "/shop/men/footwear/sandals" },
+          { name: "Sneakers", href: "/shop/men/footwear/sneakers" },
+          { name: "Sports Shoes", href: "/shop/men/footwear/sports-shoes" },
+        ],
+      },
+      {
+        name: "Accessories",
+        href: "/shop/men/accessories",
+        subItems: [
+          { name: "Backpacks", href: "/shop/men/accessories/backpacks" },
+          { name: "Bags & Wallets", href: "/shop/men/accessories/bags-wallets" },
+          { name: "Belts", href: "/shop/men/accessories/belts" },
+          { name: "Caps & Hats", href: "/shop/men/accessories/caps-hats" },
+          { name: "Fashion Accessories", href: "/shop/men/accessories/fashion-accessories" },
+          { name: "Luggage & Trolleys", href: "/shop/men/accessories/luggage-trolleys" },
+          { name: "Socks", href: "/shop/men/accessories/socks" },
+          { name: "Sunglasses", href: "/shop/men/accessories/sunglasses" },
+          { name: "Watches", href: "/shop/men/accessories/watches" },
+        ],
+      },
+      {
+        name: "Western Wear",
+        href: "/shop/men/western-wear",
+        subItems: [
+          { name: "Jackets & Coats", href: "/shop/men/western-wear/jackets-coats" },
+          { name: "Jeans", href: "/shop/men/western-wear/jeans" },
+          { name: "Shorts & 3/4ths", href: "/shop/men/western-wear/shorts-3-4ths" },
+          { name: "Sweatshirts & Hoodies", href: "/shop/men/western-wear/sweatshirts-hoodies" },
+          { name: "Track Pants", href: "/shop/men/western-wear/track-pants" },
+          { name: "Boxers", href: "/shop/men/western-wear/boxers" },
+        ],
+      },
       { name: "Night and Lounge Wear", href: "/shop/men/night-lounge-wear" },
-      { name: "Ethnic and Festive", href: "/shop/men/ethnic-festive" },
+      {
+        name: "Ethnic and Festive",
+        href: "/shop/men/ethnic-festive",
+        subItems: [
+          { name: "Dhotis", href: "/shop/men/ethnic-festive/dhotis" },
+          { name: "Shirts", href: "/shop/men/ethnic-festive/shirts" },
+          { name: "Kurtas", href: "/shop/men/ethnic-festive/kurtas" },
+        ],
+      },
     ],
   },
   {
     name: "Women",
     href: "/shop/women",
     subcategories: [
-      { name: "Formal Wear", href: "/shop/women/formal-wear" },
-      { name: "Casual Wear", href: "/shop/women/casual-wear" },
-      { name: "Oversized Fit", href: "/shop/women/oversized-fit" },
-      { name: "Lingerie and Innerwear", href: "/shop/women/lingerie-innerwear" },
-      { name: "Footwear", href: "/shop/women/footwear" },
-      { name: "Accessories", href: "/shop/women/accessories" },
-      { name: "Western Wear", href: "/shop/women/western-wear" },
+      {
+        name: "Formal Wear",
+        href: "/shop/women/formal-wear",
+        subItems: [
+          { name: "Shirts", href: "/shop/women/formal-wear/shirts" },
+          { name: "Pants", href: "/shop/women/formal-wear/pants" },
+        ],
+      },
+      {
+        name: "Casual Wear",
+        href: "/shop/women/casual-wear",
+        subItems: [
+          { name: "Shirts", href: "/shop/women/casual-wear/shirts" },
+          { name: "Pants", href: "/shop/women/casual-wear/pants" },
+          { name: "T-Shirts", href: "/shop/women/casual-wear/t-shirts" },
+        ],
+      },
+      {
+        name: "Oversized Fit",
+        href: "/shop/women/oversized-fit",
+        subItems: [
+          { name: "Shirts", href: "/shop/women/oversized-fit/shirts" },
+          { name: "Pants", href: "/shop/women/oversized-fit/pants" },
+          { name: "Polo T-Shirts", href: "/shop/women/oversized-fit/polo-t-shirts" },
+          { name: "Round Neck T-Shirts", href: "/shop/women/oversized-fit/round-neck-t-shirts" },
+          { name: "Hoodies", href: "/shop/women/oversized-fit/hoodies" },
+        ],
+      },
+      {
+        name: "Lingerie and Innerwear",
+        href: "/shop/women/lingerie-innerwear",
+        subItems: [
+          { name: "Bra", href: "/shop/women/lingerie-innerwear/bra" },
+          { name: "Panties", href: "/shop/women/lingerie-innerwear/panties" },
+        ],
+      },
+      {
+        name: "Footwear",
+        href: "/shop/women/footwear",
+        subItems: [
+          { name: "Casual Shoes", href: "/shop/women/footwear/casual-shoes" },
+          { name: "Sport Shoes", href: "/shop/women/footwear/sport-shoes" },
+          { name: "Flip Flops & Slippers", href: "/shop/women/footwear/flip-flops-slippers" },
+          { name: "Heeled Sandals", href: "/shop/women/footwear/heeled-sandals" },
+          { name: "Heeled Shoes", href: "/shop/women/footwear/heeled-shoes" },
+        ],
+      },
+      {
+        name: "Accessories",
+        href: "/shop/women/accessories",
+        subItems: [
+          { name: "Sunglasses", href: "/shop/women/accessories/sunglasses" },
+          { name: "Watches", href: "/shop/women/accessories/watches" },
+          { name: "Bags", href: "/shop/women/accessories/bags" },
+          { name: "Belts & Wallets", href: "/shop/women/accessories/belts-wallets" },
+          { name: "Socks", href: "/shop/women/accessories/socks" },
+          { name: "Caps", href: "/shop/women/accessories/caps" },
+          { name: "Luggage & Trolleys", href: "/shop/women/accessories/luggage-trolleys" },
+        ],
+      },
+      {
+        name: "Western Wear",
+        href: "/shop/women/western-wear",
+        subItems: [
+          { name: "Tops", href: "/shop/women/western-wear/tops" },
+          { name: "T-Shirts", href: "/shop/women/western-wear/t-shirts" },
+          { name: "Jeans & Jeggings", href: "/shop/women/western-wear/jeans-jeggings" },
+          { name: "Trousers & Pants", href: "/shop/women/western-wear/trousers-pants" },
+          { name: "Shirts", href: "/shop/women/western-wear/shirts" },
+          { name: "Track Pants", href: "/shop/women/western-wear/track-pants" },
+          { name: "Skirts & Shorts", href: "/shop/women/western-wear/skirts-shorts" },
+          { name: "Jackets & Coats", href: "/shop/women/western-wear/jackets-coats" },
+          { name: "Sweatshirts & Hoodies", href: "/shop/women/western-wear/sweatshirts-hoodies" },
+          { name: "Sweaters", href: "/shop/women/western-wear/sweaters" },
+        ],
+      },
       { name: "Night and Lounge Wear", href: "/shop/women/night-lounge-wear" },
-      { name: "Ethnic and Festive", href: "/shop/women/ethnic-festive" },
+      {
+        name: "Ethnic and Festive",
+        href: "/shop/women/ethnic-festive",
+        subItems: [
+          { name: "Kurtas", href: "/shop/women/ethnic-festive/kurtas" },
+          { name: "Churidars", href: "/shop/women/ethnic-festive/churidars" },
+          { name: "Kurtis", href: "/shop/women/ethnic-festive/kurtis" },
+          { name: "Sarees", href: "/shop/women/ethnic-festive/sarees" },
+          { name: "Dupattas", href: "/shop/women/ethnic-festive/dupattas" },
+          { name: "Diwali Dresses", href: "/shop/women/ethnic-festive/diwali-dresses" },
+        ],
+      },
     ],
   },
   {

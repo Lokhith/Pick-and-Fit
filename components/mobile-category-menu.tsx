@@ -4,9 +4,15 @@ import { useState } from "react"
 import Link from "next/link"
 import { ChevronDown, ChevronRight } from "lucide-react"
 
+interface SubItem {
+  name: string
+  href: string
+}
+
 interface Subcategory {
   name: string
   href: string
+  subItems?: SubItem[]
 }
 
 interface Category {
@@ -22,13 +28,19 @@ interface MobileCategoryMenuProps {
 
 export default function MobileCategoryMenu({ categories, onClose }: MobileCategoryMenuProps) {
   const [openCategory, setOpenCategory] = useState<string | null>(null)
+  const [openSubcategory, setOpenSubcategory] = useState<string | null>(null)
 
   const toggleCategory = (categoryName: string) => {
     setOpenCategory(openCategory === categoryName ? null : categoryName)
+    setOpenSubcategory(null) // Close any open subcategory when toggling category
+  }
+
+  const toggleSubcategory = (subcategoryName: string) => {
+    setOpenSubcategory(openSubcategory === subcategoryName ? null : subcategoryName)
   }
 
   return (
-    <div className="flex flex-col gap-1 py-4">
+    <div className="flex flex-col gap-1 py-4 overflow-y-auto max-h-[60vh]">
       {categories.map((category) => (
         <div key={category.name} className="border-b border-gray-100 pb-2">
           <div className="flex items-center justify-between">
@@ -52,14 +64,46 @@ export default function MobileCategoryMenu({ categories, onClose }: MobileCatego
           {openCategory === category.name && (
             <div id={`category-${category.name}`} className="ml-4 flex flex-col gap-2 pt-2">
               {category.subcategories.map((subcategory) => (
-                <Link
-                  key={subcategory.name}
-                  href={subcategory.href}
-                  className="py-1 text-sm text-muted-foreground hover:text-foreground"
-                  onClick={onClose}
-                >
-                  {subcategory.name}
-                </Link>
+                <div key={subcategory.name}>
+                  <div className="flex items-center justify-between">
+                    <Link
+                      href={subcategory.href}
+                      className="py-1 text-sm text-muted-foreground hover:text-foreground"
+                      onClick={onClose}
+                    >
+                      {subcategory.name}
+                    </Link>
+                    {subcategory.subItems && subcategory.subItems.length > 0 && (
+                      <button
+                        onClick={() => toggleSubcategory(subcategory.name)}
+                        className="p-1"
+                        aria-expanded={openSubcategory === subcategory.name}
+                        aria-controls={`subcategory-${subcategory.name}`}
+                      >
+                        {openSubcategory === subcategory.name ? (
+                          <ChevronDown className="h-4 w-4" />
+                        ) : (
+                          <ChevronRight className="h-4 w-4" />
+                        )}
+                      </button>
+                    )}
+                  </div>
+
+                  {openSubcategory === subcategory.name && subcategory.subItems && (
+                    <div id={`subcategory-${subcategory.name}`} className="ml-4 flex flex-col gap-1 pt-1">
+                      {subcategory.subItems.map((subItem) => (
+                        <Link
+                          key={subItem.name}
+                          href={subItem.href}
+                          className="py-1 text-xs text-muted-foreground hover:text-foreground"
+                          onClick={onClose}
+                        >
+                          {subItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
           )}
