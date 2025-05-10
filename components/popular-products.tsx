@@ -8,43 +8,43 @@ const products = [
   {
     id: 1,
     name: "Classic White Tee",
-    price: 24.99,
-    image: "/placeholder.svg?height=400&width=300&query=classic white t-shirt",
+    price: 799,
+    image: "/classic-white-t-shirt.png",
     href: "/product/classic-white-tee",
   },
   {
     id: 2,
     name: "Slim Fit Jeans",
-    price: 49.99,
-    image: "/placeholder.svg?height=400&width=300&query=slim fit blue jeans",
+    price: 1499,
+    image: "/slim-fit-blue-jeans.png",
     href: "/product/slim-fit-jeans",
   },
   {
     id: 3,
     name: "Casual Sneakers",
-    price: 79.99,
-    image: "/placeholder.svg?height=400&width=300&query=casual white sneakers",
+    price: 2499,
+    image: "/casual-white-sneakers.png",
     href: "/product/casual-sneakers",
   },
   {
     id: 4,
     name: "Cotton Boxer Briefs",
-    price: 19.99,
-    image: "/placeholder.svg?height=400&width=300&query=cotton boxer briefs",
+    price: 599,
+    image: "/placeholder.svg?key=3ffok",
     href: "/product/cotton-boxer-briefs",
   },
   {
     id: 5,
     name: "Patterned Socks",
-    price: 12.99,
-    image: "/placeholder.svg?height=400&width=300&query=colorful patterned socks",
+    price: 399,
+    image: "/colorful-patterned-socks.png",
     href: "/product/patterned-socks",
   },
   {
     id: 6,
     name: "Hooded Sweatshirt",
-    price: 59.99,
-    image: "/placeholder.svg?height=400&width=300&query=gray hooded sweatshirt",
+    price: 1799,
+    image: "/gray-hooded-sweatshirt.png",
     href: "/product/hooded-sweatshirt",
   },
 ]
@@ -73,7 +73,7 @@ export default function PopularProducts() {
               <CardContent className="p-4">
                 <Link href={product.href} className="block">
                   <h3 className="font-semibold">{product.name}</h3>
-                  <p className="mt-1 font-medium">${product.price.toFixed(2)}</p>
+                  <p className="mt-1 font-medium">₹{product.price.toLocaleString("en-IN")}</p>
                 </Link>
               </CardContent>
               <CardFooter className="p-4 pt-0 flex gap-2">

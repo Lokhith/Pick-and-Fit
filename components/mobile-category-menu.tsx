@@ -35,7 +35,12 @@ export default function MobileCategoryMenu({ categories, onClose }: MobileCatego
             <Link href={category.href} className="py-2 text-base font-medium" onClick={onClose}>
               {category.name}
             </Link>
-            <button onClick={() => toggleCategory(category.name)} className="p-2">
+            <button
+              onClick={() => toggleCategory(category.name)}
+              className="p-2"
+              aria-expanded={openCategory === category.name}
+              aria-controls={`category-${category.name}`}
+            >
               {openCategory === category.name ? (
                 <ChevronDown className="h-5 w-5" />
               ) : (
@@ -45,7 +50,7 @@ export default function MobileCategoryMenu({ categories, onClose }: MobileCatego
           </div>
 
           {openCategory === category.name && (
-            <div className="ml-4 flex flex-col gap-2 pt-2">
+            <div id={`category-${category.name}`} className="ml-4 flex flex-col gap-2 pt-2">
               {category.subcategories.map((subcategory) => (
                 <Link
                   key={subcategory.name}

@@ -8,18 +8,20 @@ import SocialProof from "@/components/social-proof"
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-16 py-8">
+    <div className="flex flex-col">
       <HeroSection />
-      <FeaturedCategories />
-      <PopularProducts />
-      <TryAtHomeFeature />
-      <Testimonials />
-      <div className="bg-gray-50 py-16">
-        <div className="container mx-auto px-4">
-          <NewsletterSignup />
+      <div className="py-16 flex flex-col gap-16">
+        <FeaturedCategories />
+        <PopularProducts />
+        <TryAtHomeFeature />
+        <Testimonials />
+        <div className="bg-gray-50 py-16">
+          <div className="container mx-auto px-4">
+            <NewsletterSignup />
+          </div>
         </div>
+        <SocialProof />
       </div>
-      <SocialProof />
     </div>
   )
 }

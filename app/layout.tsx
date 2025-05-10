@@ -5,6 +5,7 @@ import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
+import { AuthProvider } from "@/context/auth-context"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -12,7 +13,6 @@ export const metadata: Metadata = {
   title: "Pick&Fit - Shop, Try, and Fit – Your Style, Your Choice",
   description:
     "An e-commerce platform for in-house manufactured clothing, innerwear, shoes, and socks with try-at-home feature.",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -24,9 +24,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          <Header />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
+          <AuthProvider>
+            <Header />
+            <main className="min-h-screen flex flex-col">{children}</main>
+            <Footer />
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>
