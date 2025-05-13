@@ -64,21 +64,23 @@ export default function MobileCategoryMenu({ categories, onClose }: MobileCatego
           {openCategory === category.name && (
             <div id={`category-${category.name}`} className="ml-4 flex flex-col gap-2 pt-2">
               {category.subcategories.map((subcategory) => (
-                <div key={subcategory.name}>
+                <div key={subcategory.name} className="mb-3">
                   <div className="flex items-center justify-between">
                     <Link
                       href={subcategory.href}
-                      className="py-1 text-sm text-muted-foreground hover:text-foreground"
+                      className="py-1 text-sm font-medium hover:text-foreground"
                       onClick={onClose}
                     >
                       {subcategory.name}
                     </Link>
                     {subcategory.subItems && subcategory.subItems.length > 0 && (
                       <button
-                        onClick={() => toggleSubcategory(subcategory.name)}
+                        onClick={(e) => {
+                          e.preventDefault()
+                          toggleSubcategory(subcategory.name)
+                        }}
                         className="p-1"
                         aria-expanded={openSubcategory === subcategory.name}
-                        aria-controls={`subcategory-${subcategory.name}`}
                       >
                         {openSubcategory === subcategory.name ? (
                           <ChevronDown className="h-4 w-4" />
@@ -89,8 +91,8 @@ export default function MobileCategoryMenu({ categories, onClose }: MobileCatego
                     )}
                   </div>
 
-                  {openSubcategory === subcategory.name && subcategory.subItems && (
-                    <div id={`subcategory-${subcategory.name}`} className="ml-4 flex flex-col gap-1 pt-1">
+                  {subcategory.subItems && subcategory.subItems.length > 0 && openSubcategory === subcategory.name && (
+                    <div className="grid grid-cols-2 gap-x-2 ml-4 pt-1 border-l border-gray-100 pl-2 mt-1">
                       {subcategory.subItems.map((subItem) => (
                         <Link
                           key={subItem.name}

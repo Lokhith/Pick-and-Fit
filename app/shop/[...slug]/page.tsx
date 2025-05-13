@@ -63,7 +63,7 @@ const mockProducts = [
     id: 6,
     name: "Oversized Shirt",
     price: 1399,
-    image: "/placeholder.svg?height=400&width=300&query=oversized%20shirt%20for%20men%20fashion%20photography",
+    image: "/mens-oversized-shirt-fashion.png",
     category: "oversized-fit",
     subcategory: "shirts",
     gender: "men",
@@ -72,7 +72,7 @@ const mockProducts = [
     id: 7,
     name: "Oversized Pants",
     price: 1699,
-    image: "/placeholder.svg?height=400&width=300&query=oversized%20baggy%20pants%20for%20men%20fashion%20photography",
+    image: "/mens-baggy-pants-fashion.png",
     category: "oversized-fit",
     subcategory: "pants",
     gender: "men",
@@ -81,7 +81,7 @@ const mockProducts = [
     id: 8,
     name: "Polo T-Shirt",
     price: 999,
-    image: "/placeholder.svg?height=400&width=300&query=men%20polo%20t-shirt%20with%20collar%20fashion%20photography",
+    image: "/placeholder.svg?key=kww7e",
     category: "oversized-fit",
     subcategory: "polo-t-shirts",
     gender: "men",
@@ -90,7 +90,7 @@ const mockProducts = [
     id: 9,
     name: "Round Neck T-Shirt",
     price: 899,
-    image: "/placeholder.svg?height=400&width=300&query=men%20round%20neck%20t-shirt%20casual%20fashion%20photography",
+    image: "/men-round-neck-t-shirt.png",
     category: "oversized-fit",
     subcategory: "round-neck-t-shirts",
     gender: "men",
@@ -99,7 +99,7 @@ const mockProducts = [
     id: 10,
     name: "Oversized Hoodie",
     price: 1899,
-    image: "/placeholder.svg?height=400&width=300&query=men%20oversized%20hoodie%20fashion%20photography",
+    image: "/men-oversized-hoodie.png",
     category: "oversized-fit",
     subcategory: "hoodies",
     gender: "men",
@@ -108,7 +108,7 @@ const mockProducts = [
     id: 11,
     name: "Vest",
     price: 499,
-    image: "/placeholder.svg?height=400&width=300&query=men%20white%20vest%20innerwear%20fashion%20photography",
+    image: "/men-white-vest-innerwear.png",
     category: "innerwear",
     subcategory: "vests",
     gender: "men",
@@ -117,7 +117,7 @@ const mockProducts = [
     id: 12,
     name: "Gym Vest",
     price: 599,
-    image: "/placeholder.svg?height=400&width=300&query=men%20gym%20tank%20top%20athletic%20fashion%20photography",
+    image: "/men-gym-tank-top.png",
     category: "innerwear",
     subcategory: "gym-vests",
     gender: "men",
@@ -126,7 +126,7 @@ const mockProducts = [
     id: 13,
     name: "Briefs",
     price: 399,
-    image: "/placeholder.svg?height=400&width=300&query=men%20briefs%20underwear%20fashion%20photography",
+    image: "/men-briefs-fashion.png",
     category: "innerwear",
     subcategory: "briefs",
     gender: "men",
@@ -137,7 +137,7 @@ const mockProducts = [
     id: 14,
     name: "Formal Shirt",
     price: 1499,
-    image: "/placeholder.svg?height=400&width=300&query=women%20formal%20shirt%20business%20fashion%20photography",
+    image: "/formal-shirt-business-woman.png",
     category: "formal-wear",
     subcategory: "shirts",
     gender: "women",
@@ -146,7 +146,7 @@ const mockProducts = [
     id: 15,
     name: "Formal Pants",
     price: 1799,
-    image: "/placeholder.svg?height=400&width=300&query=women%20formal%20pants%20business%20fashion%20photography",
+    image: "/formal-pants-business-fashion.png",
     category: "formal-wear",
     subcategory: "pants",
     gender: "women",
@@ -155,7 +155,7 @@ const mockProducts = [
     id: 16,
     name: "Casual Shirt",
     price: 1299,
-    image: "/placeholder.svg?height=400&width=300&query=women%20casual%20shirt%20fashion%20photography",
+    image: "/women-casual-shirt-fashion.png",
     category: "casual-wear",
     subcategory: "shirts",
     gender: "women",
@@ -164,7 +164,7 @@ const mockProducts = [
     id: 17,
     name: "Casual Pants",
     price: 1399,
-    image: "/placeholder.svg?height=400&width=300&query=women%20casual%20pants%20fashion%20photography",
+    image: "/placeholder.svg?key=3shue",
     category: "casual-wear",
     subcategory: "pants",
     gender: "women",
@@ -173,7 +173,7 @@ const mockProducts = [
     id: 18,
     name: "Casual T-Shirt",
     price: 899,
-    image: "/placeholder.svg?height=400&width=300&query=women%20casual%20t-shirt%20fashion%20photography",
+    image: "/casual-tshirt-fashion.png",
     category: "casual-wear",
     subcategory: "t-shirts",
     gender: "women",
@@ -182,7 +182,7 @@ const mockProducts = [
     id: 19,
     name: "Oversized Shirt",
     price: 1399,
-    image: "/placeholder.svg?height=400&width=300&query=women%20oversized%20shirt%20fashion%20photography",
+    image: "/oversized-shirt-fashion.png",
     category: "oversized-fit",
     subcategory: "shirts",
     gender: "women",
@@ -191,7 +191,7 @@ const mockProducts = [
     id: 20,
     name: "Oversized Pants",
     price: 1599,
-    image: "/placeholder.svg?height=400&width=300&query=women%20oversized%20pants%20fashion%20photography",
+    image: "/oversized-pants-fashion.png",
     category: "oversized-fit",
     subcategory: "pants",
     gender: "women",
@@ -200,7 +200,7 @@ const mockProducts = [
     id: 21,
     name: "Polo T-Shirt",
     price: 999,
-    image: "/placeholder.svg?height=400&width=300&query=women%20polo%20t-shirt%20fashion%20photography",
+    image: "/women-polo-fashion.png",
     category: "oversized-fit",
     subcategory: "polo-t-shirts",
     gender: "women",
@@ -209,7 +209,7 @@ const mockProducts = [
     id: 22,
     name: "Round Neck T-Shirt",
     price: 899,
-    image: "/placeholder.svg?height=400&width=300&query=women%20round%20neck%20t-shirt%20fashion%20photography",
+    image: "/women-round-neck-t-shirt.png",
     category: "oversized-fit",
     subcategory: "round-neck-t-shirts",
     gender: "women",
@@ -218,7 +218,7 @@ const mockProducts = [
     id: 23,
     name: "Oversized Hoodie",
     price: 1799,
-    image: "/placeholder.svg?height=400&width=300&query=women%20oversized%20hoodie%20fashion%20photography",
+    image: "/oversized-hoodie-fashion.png",
     category: "oversized-fit",
     subcategory: "hoodies",
     gender: "women",
@@ -227,7 +227,7 @@ const mockProducts = [
     id: 24,
     name: "Bra",
     price: 799,
-    image: "/placeholder.svg?height=400&width=300&query=women%20bra%20lingerie%20fashion%20photography",
+    image: "/lingerie-fashion-photography.png",
     category: "lingerie-innerwear",
     subcategory: "bra",
     gender: "women",
@@ -431,11 +431,373 @@ const mockProducts = [
     subcategory: "diwali-dresses",
     gender: "women",
   },
+  // Kids - Boy products
+  {
+    id: 47,
+    name: "Boys Cotton T-Shirt",
+    price: 499,
+    image: "/placeholder.svg?height=400&width=300&query=boys%20cotton%20t-shirt%20fashion%20photography",
+    category: "clothing",
+    subcategory: "tops",
+    gender: "kids",
+    kidGender: "boy",
+  },
+  {
+    id: 48,
+    name: "Boys Jeans",
+    price: 799,
+    image: "/placeholder.svg?height=400&width=300&query=boys%20jeans%20fashion%20photography",
+    category: "clothing",
+    subcategory: "bottoms",
+    gender: "kids",
+    kidGender: "boy",
+  },
+  {
+    id: 49,
+    name: "Boys Cotton Vest",
+    price: 299,
+    image: "/placeholder.svg?height=400&width=300&query=boys%20cotton%20vest%20innerwear%20fashion%20photography",
+    category: "innerwear-sleepwear",
+    subcategory: "vests",
+    gender: "kids",
+    kidGender: "boy",
+  },
+  {
+    id: 50,
+    name: "Boys Sports Shoes",
+    price: 999,
+    image: "/placeholder.svg?height=400&width=300&query=boys%20sports%20shoes%20fashion%20photography",
+    category: "footwear",
+    subcategory: "sports-shoes",
+    gender: "kids",
+    kidGender: "boy",
+  },
+  {
+    id: 51,
+    name: "Boys Kurta Set",
+    price: 1299,
+    image:
+      "/placeholder.svg?height=400&width=300&query=boys%20kurta%20set%20indian%20traditional%20fashion%20photography",
+    category: "festive-ethnic",
+    subcategory: "kurta-sets",
+    gender: "kids",
+    kidGender: "boy",
+  },
+
+  // Kids - Girl products
+  {
+    id: 52,
+    name: "Girls Floral Dress",
+    price: 799,
+    image: "/placeholder.svg?height=400&width=300&query=girls%20floral%20dress%20fashion%20photography",
+    category: "clothing",
+    subcategory: "dresses",
+    gender: "kids",
+    kidGender: "girl",
+  },
+  {
+    id: 53,
+    name: "Girls Cotton T-Shirt",
+    price: 499,
+    image: "/placeholder.svg?height=400&width=300&query=girls%20cotton%20t-shirt%20fashion%20photography",
+    category: "clothing",
+    subcategory: "tops",
+    gender: "kids",
+    kidGender: "girl",
+  },
+  {
+    id: 54,
+    name: "Girls Nightwear Set",
+    price: 699,
+    image: "/placeholder.svg?height=400&width=300&query=girls%20nightwear%20pajama%20set%20fashion%20photography",
+    category: "innerwear-sleepwear",
+    subcategory: "nightwear",
+    gender: "kids",
+    kidGender: "girl",
+  },
+  {
+    id: 55,
+    name: "Girls Sandals",
+    price: 599,
+    image: "/placeholder.svg?height=400&width=300&query=girls%20sandals%20footwear%20fashion%20photography",
+    category: "footwear",
+    subcategory: "sandals",
+    gender: "kids",
+    kidGender: "girl",
+  },
+  {
+    id: 56,
+    name: "Girls Lehenga",
+    price: 1499,
+    image: "/placeholder.svg?height=400&width=300&query=girls%20lehenga%20indian%20traditional%20fashion%20photography",
+    category: "festive-ethnic",
+    subcategory: "lehenga",
+    gender: "kids",
+    kidGender: "girl",
+  },
+  // Add these beauty products to the mockProducts array
+  // Beauty products - Skincare
+  {
+    id: 57,
+    name: "Gentle Facial Cleanser",
+    price: 599,
+    image: "/facial-cleanser-product.png",
+    category: "skincare",
+    subcategory: "cleanser",
+    gender: "beauty",
+  },
+  {
+    id: 58,
+    name: "Hydrating Moisturizer",
+    price: 799,
+    image: "/moisturizer-skincare-product.png",
+    category: "skincare",
+    subcategory: "moisturisers",
+    gender: "beauty",
+  },
+  {
+    id: 59,
+    name: "Vitamin C Serum",
+    price: 1299,
+    image: "/vitamin-c-serum-product.png",
+    category: "skincare",
+    subcategory: "serum",
+    gender: "beauty",
+  },
+  {
+    id: 60,
+    name: "SPF 50 Sunscreen",
+    price: 699,
+    image: "/placeholder.svg?height=400&width=300&query=spf%2050%20sunscreen%20skincare%20product%20photography",
+    category: "skincare",
+    subcategory: "sunscreen",
+    gender: "beauty",
+  },
+  {
+    id: 61,
+    name: "Anti-Aging Eye Cream",
+    price: 899,
+    image: "/placeholder.svg?height=400&width=300&query=anti-aging%20eye%20cream%20skincare%20product%20photography",
+    category: "skincare",
+    subcategory: "eye-cream",
+    gender: "beauty",
+  },
+  {
+    id: 62,
+    name: "Nourishing Lip Balm",
+    price: 299,
+    image: "/placeholder.svg?height=400&width=300&query=nourishing%20lip%20balm%20skincare%20product%20photography",
+    category: "skincare",
+    subcategory: "lip-balm",
+    gender: "beauty",
+  },
+
+  // Beauty products - Makeup
+  {
+    id: 63,
+    name: "Matte Lipstick",
+    price: 599,
+    image: "/matte-lipstick-product.png",
+    category: "makeup",
+    subcategory: "lipstick",
+    gender: "beauty",
+  },
+  {
+    id: 64,
+    name: "Shimmery Lip Gloss",
+    price: 499,
+    image: "/placeholder.svg?height=400&width=300&query=shimmery%20lip%20gloss%20makeup%20product%20photography",
+    category: "makeup",
+    subcategory: "lip-gloss",
+    gender: "beauty",
+  },
+  {
+    id: 65,
+    name: "Tinted Lip Balm",
+    price: 399,
+    image: "/placeholder.svg?height=400&width=300&query=tinted%20lip%20balm%20makeup%20product%20photography",
+    category: "makeup",
+    subcategory: "lip-balm",
+    gender: "beauty",
+  },
+  {
+    id: 66,
+    name: "Nail Polish Set",
+    price: 799,
+    image: "/placeholder.svg?height=400&width=300&query=nail%20polish%20set%20makeup%20product%20photography",
+    category: "makeup",
+    subcategory: "nail-care",
+    gender: "beauty",
+  },
+  {
+    id: 67,
+    name: "Volumizing Mascara",
+    price: 699,
+    image: "/placeholder.svg?height=400&width=300&query=volumizing%20mascara%20makeup%20product%20photography",
+    category: "makeup",
+    subcategory: "mascara",
+    gender: "beauty",
+  },
+  {
+    id: 68,
+    name: "Waterproof Eyeliner",
+    price: 499,
+    image: "/placeholder.svg?height=400&width=300&query=waterproof%20eyeliner%20makeup%20product%20photography",
+    category: "makeup",
+    subcategory: "eyeliner-kajals",
+    gender: "beauty",
+  },
+  {
+    id: 69,
+    name: "Liquid Foundation",
+    price: 899,
+    image: "/placeholder.svg?height=400&width=300&query=liquid%20foundation%20makeup%20product%20photography",
+    category: "makeup",
+    subcategory: "foundation",
+    gender: "beauty",
+  },
+
+  // Beauty products - Haircare
+  {
+    id: 70,
+    name: "Anti-Dandruff Shampoo",
+    price: 499,
+    image: "/shampoo-haircare-product.png",
+    category: "haircare",
+    subcategory: "shampoo",
+    gender: "beauty",
+  },
+  {
+    id: 71,
+    name: "Moisturizing Conditioner",
+    price: 549,
+    image: "/placeholder.svg?height=400&width=300&query=moisturizing%20conditioner%20haircare%20product%20photography",
+    category: "haircare",
+    subcategory: "conditioner",
+    gender: "beauty",
+  },
+  {
+    id: 72,
+    name: "Argan Hair Oil",
+    price: 699,
+    image: "/placeholder.svg?height=400&width=300&query=argan%20hair%20oil%20haircare%20product%20photography",
+    category: "haircare",
+    subcategory: "hair-oil",
+    gender: "beauty",
+  },
+  {
+    id: 73,
+    name: "Ammonia-Free Hair Color",
+    price: 899,
+    image: "/placeholder.svg?height=400&width=300&query=ammonia-free%20hair%20color%20haircare%20product%20photography",
+    category: "haircare",
+    subcategory: "hair-color",
+    gender: "beauty",
+  },
+  {
+    id: 74,
+    name: "Hair Styling Gel",
+    price: 399,
+    image: "/placeholder.svg?height=400&width=300&query=hair%20styling%20gel%20haircare%20product%20photography",
+    category: "haircare",
+    subcategory: "hair-styling",
+    gender: "beauty",
+  },
+
+  // Beauty products - Fragrances
+  {
+    id: 75,
+    name: "Floral Perfume",
+    price: 1499,
+    image: "/placeholder.svg?height=400&width=300&query=floral%20perfume%20fragrance%20product%20photography",
+    category: "fragrances",
+    subcategory: "perfumes",
+    gender: "beauty",
+  },
+  {
+    id: 76,
+    name: "Long-lasting Deodorant",
+    price: 299,
+    image: "/placeholder.svg?height=400&width=300&query=long-lasting%20deodorant%20fragrance%20product%20photography",
+    category: "fragrances",
+    subcategory: "deodorants",
+    gender: "beauty",
+  },
+
+  // Beauty products - Bath and Body
+  {
+    id: 77,
+    name: "Exfoliating Face Wash",
+    price: 399,
+    image:
+      "/placeholder.svg?height=400&width=300&query=exfoliating%20face%20wash%20bath%20body%20product%20photography",
+    category: "bath-body",
+    subcategory: "face-wash",
+    gender: "beauty",
+  },
+  {
+    id: 78,
+    name: "Moisturizing Body Wash",
+    price: 449,
+    image:
+      "/placeholder.svg?height=400&width=300&query=moisturizing%20body%20wash%20bath%20body%20product%20photography",
+    category: "bath-body",
+    subcategory: "body-wash",
+    gender: "beauty",
+  },
+  {
+    id: 79,
+    name: "Coffee Body Scrub",
+    price: 599,
+    image: "/placeholder.svg?height=400&width=300&query=coffee%20body%20scrub%20bath%20body%20product%20photography",
+    category: "bath-body",
+    subcategory: "body-scrub",
+    gender: "beauty",
+  },
+
+  // Beauty products - Men Grooming
+  {
+    id: 80,
+    name: "Shaving Cream",
+    price: 349,
+    image: "/placeholder.svg?height=400&width=300&query=shaving%20cream%20men%20grooming%20product%20photography",
+    category: "men-grooming",
+    subcategory: "shaving-essentials",
+    gender: "beauty",
+  },
+  {
+    id: 81,
+    name: "Beard Oil",
+    price: 499,
+    image: "/beard-oil-product.png",
+    category: "men-grooming",
+    subcategory: "beard-essentials",
+    gender: "beauty",
+  },
+  {
+    id: 82,
+    name: "Hair Wax",
+    price: 399,
+    image: "/placeholder.svg?height=400&width=300&query=hair%20wax%20men%20grooming%20product%20photography",
+    category: "men-grooming",
+    subcategory: "hair-wax",
+    gender: "beauty",
+  },
+  {
+    id: 83,
+    name: "Men's Deodorant",
+    price: 299,
+    image: "/placeholder.svg?height=400&width=300&query=mens%20deodorant%20men%20grooming%20product%20photography",
+    category: "men-grooming",
+    subcategory: "deodorants",
+    gender: "beauty",
+  },
 ]
 
 // Category structure for filters
 const categoryFilters = {
   men: {
+    // Men's categories remain the same
     "casual-wear": ["shirts", "pants", "t-shirts"],
     "formal-wear": ["shirts", "pants"],
     "oversized-fit": ["shirts", "pants", "polo-t-shirts", "round-neck-t-shirts", "hoodies"],
@@ -457,6 +819,7 @@ const categoryFilters = {
     "ethnic-festive": ["dhotis", "shirts", "kurtas"],
   },
   women: {
+    // Women's categories remain the same
     "formal-wear": ["shirts", "pants"],
     "casual-wear": ["shirts", "pants", "t-shirts"],
     "oversized-fit": ["shirts", "pants", "polo-t-shirts", "round-neck-t-shirts", "hoodies"],
@@ -478,11 +841,38 @@ const categoryFilters = {
     "night-lounge-wear": [],
     "ethnic-festive": ["kurtas", "churidars", "kurtis", "sarees", "dupattas", "diwali-dresses"],
   },
+  kids: {
+    // Kids categories remain the same
+    boy: {
+      clothing: ["tops", "bottoms", "sets"],
+      "innerwear-sleepwear": ["underwear", "vests", "nightwear"],
+      "toys-babycare": ["toys", "babycare-products"],
+      footwear: ["casual-shoes", "sports-shoes", "sandals"],
+      "festive-ethnic": ["kurta-sets", "traditional-wear"],
+    },
+    girl: {
+      clothing: ["tops", "bottoms", "dresses", "sets"],
+      "innerwear-sleepwear": ["underwear", "slips", "nightwear"],
+      "toys-babycare": ["toys", "babycare-products"],
+      footwear: ["casual-shoes", "flats", "sandals"],
+      "festive-ethnic": ["lehenga", "salwar-sets", "traditional-wear"],
+    },
+  },
+  // Add beauty categories
+  beauty: {
+    skincare: ["cleanser", "moisturisers", "serum", "sunscreen", "eye-cream", "lip-balm"],
+    makeup: ["lipstick", "lip-gloss", "lip-balm", "nail-care", "mascara", "eyeliner-kajals", "foundation"],
+    haircare: ["shampoo", "conditioner", "hair-oil", "hair-color", "hair-styling"],
+    fragrances: ["perfumes", "deodorants"],
+    "bath-body": ["face-wash", "body-wash", "body-scrub"],
+    "men-grooming": ["shaving-essentials", "beard-essentials", "hair-wax", "deodorants"],
+  },
 }
 
 // Helper function to get category name from slug
 const getCategoryName = (slug: string) => {
   const categoryMap: { [key: string]: string } = {
+    // Existing categories
     men: "Men",
     women: "Women",
     kids: "Kids",
@@ -535,16 +925,132 @@ const getCategoryName = (slug: string) => {
     sarees: "Sarees",
     dupattas: "Dupattas",
     "diwali-dresses": "Diwali Dresses",
+    boy: "Boy",
+    girl: "Girl",
+    clothing: "Clothing",
+    "innerwear-sleepwear": "Innerwear & Sleepwear",
+    "toys-babycare": "Toys & Babycare",
+    "festive-ethnic": "Festive & Ethnic Wear",
+    tops: "Tops",
+    bottoms: "Bottoms",
+    sets: "Sets",
+    underwear: "Underwear",
+    vests: "Vests",
+    nightwear: "Nightwear",
+    toys: "Toys",
+    "babycare-products": "Babycare Products",
+    "casual-shoes": "Casual Shoes",
+    "sports-shoes": "Sport Shoes",
+    sandals: "Sandals",
+    "kurta-sets": "Kurta Sets",
+    "traditional-wear": "Traditional Wear",
+    dresses: "Dresses",
+    slips: "Slips",
+    flats: "Flats",
+    lehenga: "Lehenga",
+    "salwar-sets": "Salwar Sets",
+
+    // Beauty categories
+    skincare: "Skincare",
+    makeup: "Makeup",
+    haircare: "Haircare",
+    fragrances: "Fragrances",
+    "bath-body": "Bath & Body",
+    "men-grooming": "Men's Grooming",
+
+    // Skincare subcategories
+    cleanser: "Cleanser",
+    moisturisers: "Moisturisers",
+    serum: "Serum",
+    sunscreen: "Sunscreen",
+    "eye-cream": "Eye Cream",
+    "lip-balm": "Lip Balm",
+
+    // Makeup subcategories
+    lipstick: "Lipstick",
+    "lip-gloss": "Lip Gloss",
+    "nail-care": "Nail Care",
+    mascara: "Mascara",
+    "eyeliner-kajals": "Eyeliner & Kajals",
+    foundation: "Foundation",
+
+    // Haircare subcategories
+    shampoo: "Shampoo",
+    conditioner: "Conditioner",
+    "hair-oil": "Hair Oil",
+    "hair-color": "Hair Color",
+    "hair-styling": "Hair Styling",
+
+    // Fragrances subcategories
+    perfumes: "Perfumes",
+    deodorants: "Deodorants",
+
+    // Bath and Body subcategories
+    "face-wash": "Face Wash",
+    "body-wash": "Body Wash",
+    "body-scrub": "Body Scrub",
+
+    // Men Grooming subcategories
+    "shaving-essentials": "Shaving Essentials",
+    "beard-essentials": "Beard Essentials",
+    "hair-wax": "Hair Wax",
   }
   return categoryMap[slug] || slug
 }
 
-// Helper function to get subcategories for a category
-const getSubcategories = (gender: string, category: string) => {
-  if (gender && category && categoryFilters[gender as keyof typeof categoryFilters]) {
-    return categoryFilters[gender as keyof typeof categoryFilters][
-      category as keyof (typeof categoryFilters)[keyof typeof categoryFilters]
-    ]
+// Updated getSubcategories function to properly handle beauty category
+const getSubcategories = (gender: string, category: string, slugArray: string[]) => {
+  if (gender && category) {
+    // Handle kids categories differently since they have an extra level
+    if (gender === "kids") {
+      // If category is boy or girl, return their subcategories
+      if (category === "boy" || category === "girl") {
+        return Object.keys(categoryFilters.kids[category as keyof typeof categoryFilters.kids])
+      }
+
+      // If we're looking at a deeper level for kids, find the parent (boy/girl)
+      // and then look for subcategories under the specified category
+      const kidGender = slugArray[1] // boy or girl
+      const kidCategory = category // clothing, innerwear-sleepwear, etc.
+
+      if (
+        kidGender &&
+        (kidGender === "boy" || kidGender === "girl") &&
+        categoryFilters.kids[kidGender as keyof typeof categoryFilters.kids][
+          kidCategory as keyof (typeof categoryFilters.kids)[keyof typeof categoryFilters.kids]
+        ]
+      ) {
+        return categoryFilters.kids[kidGender as keyof typeof categoryFilters.kids][
+          kidCategory as keyof (typeof categoryFilters.kids)[keyof typeof categoryFilters.kids]
+        ]
+      }
+
+      return []
+    }
+
+    // Handle beauty category
+    if (gender === "beauty") {
+      // If no specific beauty category is selected, return all beauty categories
+      if (!category || category === "beauty") {
+        return Object.keys(categoryFilters.beauty)
+      }
+
+      // If a beauty category is selected, return its subcategories
+      if (categoryFilters.beauty[category as keyof typeof categoryFilters.beauty]) {
+        return categoryFilters.beauty[category as keyof typeof categoryFilters.beauty]
+      }
+
+      return []
+    }
+
+    // Handle regular men/women categories
+    if (categoryFilters[gender as keyof typeof categoryFilters]) {
+      return (
+        categoryFilters[gender as keyof typeof categoryFilters][
+          category as keyof (typeof categoryFilters)[keyof typeof categoryFilters]
+        ] || []
+      )
+    }
   }
   return []
 }
@@ -572,16 +1078,52 @@ export default function ShopPage() {
     // Filter by gender
     if (gender) {
       filtered = filtered.filter((product) => product.gender === gender)
-    }
 
-    // Filter by category
-    if (category) {
-      filtered = filtered.filter((product) => product.category === category)
-    }
+      // Handle kids specific filtering
+      if (gender === "kids") {
+        const kidGender = slugArray[1] // boy or girl
+        if (kidGender && (kidGender === "boy" || kidGender === "girl")) {
+          filtered = filtered.filter((product) => product.kidGender === kidGender)
 
-    // Filter by selected subcategories
-    if (selectedSubcategories.length > 0) {
-      filtered = filtered.filter((product) => selectedSubcategories.includes(product.subcategory))
+          // If we have a category for kids (like clothing, footwear)
+          const kidCategory = slugArray[2]
+          if (kidCategory) {
+            filtered = filtered.filter((product) => product.category === kidCategory)
+
+            // If we have a subcategory for kids (like tops, bottoms)
+            const kidSubcategory = slugArray[3]
+            if (kidSubcategory && selectedSubcategories.length > 0) {
+              filtered = filtered.filter((product) => selectedSubcategories.includes(product.subcategory))
+            }
+          }
+        }
+      } else if (gender === "beauty") {
+        // Handle beauty category filtering
+        const beautyCategory = slugArray[1]
+        if (beautyCategory) {
+          filtered = filtered.filter((product) => product.category === beautyCategory)
+
+          // If we have a subcategory for beauty (like cleanser, moisturisers)
+          const beautySubcategory = slugArray[2]
+          if (beautySubcategory) {
+            filtered = filtered.filter((product) => product.subcategory === beautySubcategory)
+          } else if (selectedSubcategories.length > 0) {
+            // Filter by selected subcategories if any are selected
+            filtered = filtered.filter((product) => selectedSubcategories.includes(product.subcategory))
+          }
+        }
+      } else {
+        // Handle normal categories (men, women)
+        // Filter by category
+        if (category) {
+          filtered = filtered.filter((product) => product.category === category)
+        }
+
+        // Filter by selected subcategories
+        if (selectedSubcategories.length > 0) {
+          filtered = filtered.filter((product) => selectedSubcategories.includes(product.subcategory))
+        }
+      }
     }
 
     // Filter by price range
@@ -598,7 +1140,7 @@ export default function ShopPage() {
     }
 
     setFilteredProducts(filtered)
-  }, [products, gender, category, selectedSubcategories, priceRange, sortBy])
+  }, [products, gender, category, slugArray, selectedSubcategories, priceRange, sortBy])
 
   // Toggle subcategory selection
   const toggleSubcategory = (subcategory: string) => {
@@ -614,7 +1156,7 @@ export default function ShopPage() {
   }
 
   // Get available subcategories for the current category
-  const availableSubcategories = getSubcategories(gender, category)
+  const availableSubcategories = getSubcategories(gender, category, slugArray)
 
   // Build breadcrumb path
   const breadcrumbItems = [
@@ -700,9 +1242,11 @@ export default function ShopPage() {
               {/* Mobile Filters */}
               <div className="flex-1 overflow-y-auto">
                 {/* Subcategories */}
-                {category && availableSubcategories.length > 0 && (
+                {availableSubcategories.length > 0 && (
                   <div className="mb-6">
-                    <h3 className="text-sm font-semibold mb-3">Subcategories</h3>
+                    <h3 className="text-sm font-semibold mb-3">
+                      {gender === "beauty" && !category ? "Categories" : "Subcategories"}
+                    </h3>
                     <div className="space-y-2">
                       {availableSubcategories.map((sub) => (
                         <div key={sub} className="flex items-center">
@@ -784,9 +1328,11 @@ export default function ShopPage() {
             </div>
 
             {/* Subcategories */}
-            {category && availableSubcategories.length > 0 && (
+            {availableSubcategories.length > 0 && (
               <div className="mb-6">
-                <h3 className="text-sm font-semibold mb-3">Subcategories</h3>
+                <h3 className="text-sm font-semibold mb-3">
+                  {gender === "beauty" && !category ? "Categories" : "Subcategories"}
+                </h3>
                 <div className="space-y-2">
                   {availableSubcategories.map((sub) => (
                     <div key={sub} className="flex items-center">

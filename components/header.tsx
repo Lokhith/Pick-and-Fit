@@ -8,7 +8,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { ThemeToggle } from "@/components/theme-toggle"
-import CategoryDropdown from "@/components/category-dropdown"
+import HierarchicalDropdown from "@/components/hierarchical-dropdown"
+import BeautyHierarchicalDropdown from "@/components/beauty-hierarchical-dropdown"
 import MobileCategoryMenu from "@/components/mobile-category-menu"
 import { Badge } from "@/components/ui/badge"
 import { useAuth } from "@/context/auth-context"
@@ -215,30 +216,97 @@ const categories = [
     name: "Kids",
     href: "/shop/kids",
     subcategories: [
-      { name: "Boy", href: "/shop/kids/boy" },
-      { name: "Girl", href: "/shop/kids/girl" },
-      { name: "Boy Clothing", href: "/shop/kids/boy/clothing" },
-      { name: "Boy Innerwear and Sleepwear", href: "/shop/kids/boy/innerwear-sleepwear" },
-      { name: "Boy Toys and Babycare", href: "/shop/kids/boy/toys-babycare" },
-      { name: "Boy Footwear", href: "/shop/kids/boy/footwear" },
-      { name: "Boy Festive and Ethnic Wear", href: "/shop/kids/boy/festive-ethnic" },
-      { name: "Girl Clothing", href: "/shop/kids/girl/clothing" },
-      { name: "Girl Innerwear and Sleepwear", href: "/shop/kids/girl/innerwear-sleepwear" },
-      { name: "Girl Toys and Babycare", href: "/shop/kids/girl/toys-babycare" },
-      { name: "Girl Footwear", href: "/shop/kids/girl/footwear" },
-      { name: "Girl Festive and Ethnic Wear", href: "/shop/kids/girl/festive-ethnic" },
+      {
+        name: "Boy",
+        href: "/shop/kids/boy",
+        subItems: [
+          { name: "Clothing", href: "/shop/kids/boy/clothing" },
+          { name: "Innerwear and Sleepwear", href: "/shop/kids/boy/innerwear-sleepwear" },
+          { name: "Toys and Babycare", href: "/shop/kids/boy/toys-babycare" },
+          { name: "Footwear", href: "/shop/kids/boy/footwear" },
+          { name: "Festive and Ethnic Wear", href: "/shop/kids/boy/festive-ethnic" },
+        ],
+      },
+      {
+        name: "Girl",
+        href: "/shop/kids/girl",
+        subItems: [
+          { name: "Clothing", href: "/shop/kids/girl/clothing" },
+          { name: "Innerwear and Sleepwear", href: "/shop/kids/girl/innerwear-sleepwear" },
+          { name: "Toys and Babycare", href: "/shop/kids/girl/toys-babycare" },
+          { name: "Footwear", href: "/shop/kids/girl/footwear" },
+          { name: "Festive and Ethnic Wear", href: "/shop/kids/girl/festive-ethnic" },
+        ],
+      },
     ],
   },
   {
     name: "Beauty",
     href: "/shop/beauty",
     subcategories: [
-      { name: "Skincare", href: "/shop/beauty/skincare" },
-      { name: "Makeup", href: "/shop/beauty/makeup" },
-      { name: "Haircare", href: "/shop/beauty/haircare" },
-      { name: "Fragrances", href: "/shop/beauty/fragrances" },
-      { name: "Bath and Body", href: "/shop/beauty/bath-body" },
-      { name: "Men Grooming", href: "/shop/beauty/men-grooming" },
+      {
+        name: "Skincare",
+        href: "/shop/beauty/skincare",
+        subItems: [
+          { name: "Cleanser", href: "/shop/beauty/skincare/cleanser" },
+          { name: "Moisturisers", href: "/shop/beauty/skincare/moisturisers" },
+          { name: "Serum", href: "/shop/beauty/skincare/serum" },
+          { name: "Sunscreen", href: "/shop/beauty/skincare/sunscreen" },
+          { name: "Eye Cream", href: "/shop/beauty/skincare/eye-cream" },
+          { name: "Lip Balm", href: "/shop/beauty/skincare/lip-balm" },
+        ],
+      },
+      {
+        name: "Makeup",
+        href: "/shop/beauty/makeup",
+        subItems: [
+          { name: "Lipstick", href: "/shop/beauty/makeup/lipstick" },
+          { name: "Lip Gloss", href: "/shop/beauty/makeup/lip-gloss" },
+          { name: "Lip Balm", href: "/shop/beauty/makeup/lip-balm" },
+          { name: "Nail Care", href: "/shop/beauty/makeup/nail-care" },
+          { name: "Mascara", href: "/shop/beauty/makeup/mascara" },
+          { name: "Eyeliner & Kajals", href: "/shop/beauty/makeup/eyeliner-kajals" },
+          { name: "Foundation", href: "/shop/beauty/makeup/foundation" },
+        ],
+      },
+      {
+        name: "Haircare",
+        href: "/shop/beauty/haircare",
+        subItems: [
+          { name: "Shampoo", href: "/shop/beauty/haircare/shampoo" },
+          { name: "Conditioner", href: "/shop/beauty/haircare/conditioner" },
+          { name: "Hair Oil", href: "/shop/beauty/haircare/hair-oil" },
+          { name: "Hair Color", href: "/shop/beauty/haircare/hair-color" },
+          { name: "Hair Styling", href: "/shop/beauty/haircare/hair-styling" },
+        ],
+      },
+      {
+        name: "Fragrances",
+        href: "/shop/beauty/fragrances",
+        subItems: [
+          { name: "Perfumes", href: "/shop/beauty/fragrances/perfumes" },
+          { name: "Deodorants", href: "/shop/beauty/fragrances/deodorants" },
+        ],
+      },
+      {
+        name: "Bath and Body",
+        href: "/shop/beauty/bath-body",
+        subItems: [
+          { name: "Face Wash", href: "/shop/beauty/bath-body/face-wash" },
+          { name: "Body Wash", href: "/shop/beauty/bath-body/body-wash" },
+          { name: "Body Scrub", href: "/shop/beauty/bath-body/body-scrub" },
+        ],
+      },
+      {
+        name: "Men Grooming",
+        href: "/shop/beauty/men-grooming",
+        subItems: [
+          { name: "Shaving Essentials", href: "/shop/beauty/men-grooming/shaving-essentials" },
+          { name: "Beard Essentials", href: "/shop/beauty/men-grooming/beard-essentials" },
+          { name: "Hair Wax", href: "/shop/beauty/men-grooming/hair-wax" },
+          { name: "Deodorants", href: "/shop/beauty/men-grooming/deodorants" },
+        ],
+      },
     ],
   },
 ]
@@ -462,17 +530,29 @@ export default function Header() {
       </div>
 
       {/* Categories row */}
-      <div className="container border-b">
-        <div className="hidden md:flex h-10 items-center justify-center px-4">
+      <div className="container border-b max-w-screen-2xl mx-auto">
+        <div className="hidden md:flex h-10 items-center justify-center px-4 relative">
           <nav className="flex items-center gap-8">
-            {categories.map((category, index) => (
-              <CategoryDropdown
-                key={category.name}
-                name={category.name}
-                subcategories={category.subcategories}
-                href={category.href}
-              />
-            ))}
+            {categories.map((category) => {
+              if (category.name === "Beauty") {
+                return (
+                  <BeautyHierarchicalDropdown
+                    key={category.name}
+                    name={category.name}
+                    subcategories={category.subcategories}
+                    href={category.href}
+                  />
+                )
+              }
+              return (
+                <HierarchicalDropdown
+                  key={category.name}
+                  name={category.name}
+                  subcategories={category.subcategories}
+                  href={category.href}
+                />
+              )
+            })}
             <Link
               href="/new-arrivals"
               className="text-sm font-medium transition-colors hover:text-primary relative group"
