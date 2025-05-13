@@ -70,6 +70,8 @@ export default function Footer() {
               <p>123 Fashion Street</p>
               <p>Styleville, ST 12345</p>
               <p>United States</p>
+              <p>Mon - Fri: 9 AM - 6 PM</p>
+              <p>Sat - Sun: Closed</p>
             </address>
             <p className="text-muted-foreground">
               <span className="font-medium">Email:</span> info@pickandfit.com
