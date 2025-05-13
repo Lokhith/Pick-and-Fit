@@ -1,97 +1,184 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  Youtube,
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  CreditCard,
+  ShieldCheck,
+  Truck,
+  ChevronRight,
+} from "lucide-react"
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-50 border-t">
+    <footer className="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950 border-t dark:border-gray-800">
+      {/* Pre-Footer Banner */}
+      <div className="bg-primary/10 dark:bg-primary/20 py-4">
+        <div className="container px-4">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <ShieldCheck className="h-6 w-6 text-primary" />
+              <span className="font-medium dark:text-gray-200">Secure Payments</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Truck className="h-6 w-6 text-primary" />
+              <span className="font-medium dark:text-gray-200">Fast Delivery</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <CreditCard className="h-6 w-6 text-primary" />
+              <span className="font-medium dark:text-gray-200">Pay Only For What You Keep</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Footer */}
       <div className="container px-4 py-12 md:py-16">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {/* Column 1: About & Social */}
           <div className="flex flex-col gap-4">
             <Link href="/" className="flex items-center space-x-2">
-              <Image
-                src="/single-ripe-red-tomato.png"
-                alt="Pick&Fit Logo"
-                width={120}
-                height={40}
-                className="h-10 w-auto"
-              />
+              <Image src="/pick-and-fit-logo.png" alt="Pick&Fit Logo" width={150} height={50} className="h-12 w-auto" />
             </Link>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground dark:text-gray-400">
               Pick&Fit offers a unique blend of online and offline shopping by allowing users to order multiple items,
               try them at home, and only pay for what they keep.
             </p>
             <div className="flex gap-4">
-              <Link href="#" className="text-muted-foreground hover:text-foreground">
-                <Facebook className="h-5 w-5" />
-                <span className="sr-only">Facebook</span>
+              <Link href="#" className="group">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-200 dark:bg-gray-800 group-hover:bg-primary group-hover:text-white transition-colors">
+                  <Facebook className="h-4 w-4" />
+                  <span className="sr-only">Facebook</span>
+                </div>
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-foreground">
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
+              <Link href="#" className="group">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-200 dark:bg-gray-800 group-hover:bg-primary group-hover:text-white transition-colors">
+                  <Twitter className="h-4 w-4" />
+                  <span className="sr-only">Twitter</span>
+                </div>
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-foreground">
-                <Instagram className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
+              <Link href="#" className="group">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-200 dark:bg-gray-800 group-hover:bg-primary group-hover:text-white transition-colors">
+                  <Instagram className="h-4 w-4" />
+                  <span className="sr-only">Instagram</span>
+                </div>
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-foreground">
-                <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
+              <Link href="#" className="group">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-200 dark:bg-gray-800 group-hover:bg-primary group-hover:text-white transition-colors">
+                  <Youtube className="h-4 w-4" />
+                  <span className="sr-only">YouTube</span>
+                </div>
               </Link>
+            </div>
+
+            {/* Payment Methods */}
+            <div className="mt-4">
+              <h4 className="text-sm font-medium mb-2 dark:text-gray-300">We Accept</h4>
+              <div className="flex flex-wrap gap-2">
+                <div className="bg-white dark:bg-gray-800 p-1.5 rounded shadow-sm">
+                  <Image src="/visa-card-logo.png" alt="Visa" width={40} height={30} />
+                </div>
+                <div className="bg-white dark:bg-gray-800 p-1.5 rounded shadow-sm">
+                  <Image src="/mastercard-logo.png" alt="Mastercard" width={40} height={30} />
+                </div>
+                <div className="bg-white dark:bg-gray-800 p-1.5 rounded shadow-sm">
+                  <Image src="/american-express-logo.png" alt="American Express" width={40} height={30} />
+                </div>
+                <div className="bg-white dark:bg-gray-800 p-1.5 rounded shadow-sm">
+                  <Image src="/paypal-logo.png" alt="PayPal" width={40} height={30} />
+                </div>
+              </div>
             </div>
           </div>
 
+          {/* Column 2: Quick Links */}
           <div className="flex flex-col gap-4">
-            <h3 className="font-semibold">Quick Links</h3>
-            <nav className="flex flex-col gap-2">
-              <Link href="/about" className="text-muted-foreground hover:text-foreground">
+            <h3 className="text-lg font-semibold dark:text-white relative pb-2 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-12 after:bg-primary dark:after:bg-primary">
+              Quick Links
+            </h3>
+            <nav className="grid grid-cols-1 gap-2">
+              <Link
+                href="/about"
+                className="text-muted-foreground dark:text-gray-400 hover:text-primary dark:hover:text-primary flex items-center group"
+              >
+                <ChevronRight className="h-4 w-4 mr-1 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" />
                 About Us
               </Link>
-              <Link href="/contact" className="text-muted-foreground hover:text-foreground">
+              <Link
+                href="/how-it-works"
+                className="text-muted-foreground dark:text-gray-400 hover:text-primary dark:hover:text-primary flex items-center group"
+              >
+                <ChevronRight className="h-4 w-4 mr-1 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                How It Works
+              </Link>
+              <Link
+                href="/contact"
+                className="text-muted-foreground dark:text-gray-400 hover:text-primary dark:hover:text-primary flex items-center group"
+              >
+                <ChevronRight className="h-4 w-4 mr-1 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" />
                 Contact Us
               </Link>
-              <Link href="/faq" className="text-muted-foreground hover:text-foreground">
-                FAQs
-              </Link>
-              <Link href="/privacy-policy" className="text-muted-foreground hover:text-foreground">
-                Privacy Policy
-              </Link>
-              <Link href="/terms-of-service" className="text-muted-foreground hover:text-foreground">
-                Terms of Service
+              <Link
+                href="/returns"
+                className="text-muted-foreground dark:text-gray-400 hover:text-primary dark:hover:text-primary flex items-center group"
+              >
+                <ChevronRight className="h-4 w-4 mr-1 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                Returns & Refunds
               </Link>
             </nav>
           </div>
 
+          {/* Column 3: Contact Information */}
           <div className="flex flex-col gap-4">
-            <h3 className="font-semibold">Contact Information</h3>
-            <address className="not-italic text-muted-foreground">
-              <p>123 Fashion Street</p>
-              <p>Styleville, ST 12345</p>
-              <p>United States</p>
-              <p>Mon - Fri: 9 AM - 6 PM</p>
-              <p>Sat - Sun: Closed</p>
-            </address>
-            <p className="text-muted-foreground">
-              <span className="font-medium">Email:</span> info@pickandfit.com
-            </p>
-            <p className="text-muted-foreground">
-              <span className="font-medium">Phone:</span> +1 (555) 123-4567
-            </p>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <h3 className="font-semibold">Newsletter</h3>
-            <p className="text-muted-foreground">Subscribe to receive updates, access to exclusive deals, and more.</p>
-            <div className="flex gap-2">
-              <Input type="email" placeholder="Enter your email" />
-              <Button type="submit">Subscribe</Button>
+            <h3 className="text-lg font-semibold dark:text-white relative pb-2 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-12 after:bg-primary">
+              Contact Information
+            </h3>
+            <div className="space-y-3">
+              <div className="flex items-start gap-3 group">
+                <MapPin className="h-5 w-5 mt-0.5 text-primary group-hover:scale-110 transition-transform" />
+                <address className="not-italic text-muted-foreground dark:text-gray-400">
+                  <p>42 Fashion Avenue</p>
+                  <p>Koramangala, Bangalore 560034</p>
+                  <p>Karnataka, India</p>
+                </address>
+              </div>
+              <div className="flex items-center gap-3 group">
+                <Mail className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
+                <a
+                  href="mailto:info@pickandfit.com"
+                  className="text-muted-foreground dark:text-gray-400 hover:text-primary dark:hover:text-primary"
+                >
+                  info@pickandfit.com
+                </a>
+              </div>
+              <div className="flex items-center gap-3 group">
+                <Phone className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
+                <a
+                  href="tel:+919025666209"
+                  className="text-muted-foreground dark:text-gray-400 hover:text-primary dark:hover:text-primary"
+                >
+                  +91 9025666209
+                </a>
+              </div>
+              <div className="flex items-center gap-3 group">
+                <Clock className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
+                <div className="text-muted-foreground dark:text-gray-400">
+                  <p>Mon-Fri: 9:00 AM - 8:00 PM</p>
+                  <p>Sat-Sun: 10:00 AM - 6:00 PM</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 border-t pt-6 text-center text-sm text-muted-foreground">
+        {/* Copyright */}
+        <div className="mt-12 pt-6 border-t dark:border-gray-800 text-center text-sm text-muted-foreground dark:text-gray-400">
           <p>© {new Date().getFullYear()} Pick&Fit. All rights reserved.</p>
         </div>
       </div>

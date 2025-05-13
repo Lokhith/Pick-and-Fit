@@ -44,7 +44,7 @@ export default function HeroSection() {
   }
 
   return (
-    <section className="relative h-[650px] md:h-[700px] w-full overflow-hidden bg-gray-900">
+    <section className="relative h-[500px] md:h-[550px] w-full overflow-hidden bg-gray-900">
       {/* Background image carousel */}
       {slides.map((slide, index) => (
         <div
@@ -76,35 +76,35 @@ export default function HeroSection() {
           className="max-w-2xl"
         >
           {/* Badge */}
-          <div className="inline-flex items-center rounded-full bg-primary/20 px-3 py-1 text-sm font-medium text-primary-foreground backdrop-blur-sm mb-6">
+          <div className="inline-flex items-center rounded-full bg-primary/20 px-3 py-1 text-sm font-medium text-primary-foreground backdrop-blur-sm mb-4">
             <span className="mr-1">✨</span> The new way to shop fashion
           </div>
 
           {/* Headline */}
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl mb-4">
+          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-3">
             {slides[currentSlide].title}
           </h1>
 
           {/* Subheadline */}
-          <p className="mt-2 text-xl text-white/90 mb-6">{slides[currentSlide].subtitle}</p>
+          <p className="mt-2 text-lg text-white/90 mb-4">{slides[currentSlide].subtitle}</p>
 
           {/* Main description */}
-          <p className="mt-2 text-lg text-white/80 max-w-xl mb-8">
+          <p className="mt-1 text-base text-white/80 max-w-xl mb-6">
             Pick&Fit revolutionizes online shopping by letting you try clothes in the comfort of your home before
             committing to purchase. No more size surprises or style disappointments.
           </p>
 
           {/* CTA buttons */}
-          <div className="flex flex-wrap gap-4 mb-12">
+          <div className="flex flex-wrap gap-4 mb-8">
             <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
               <Link href="/shop" className="flex items-center">
                 Shop Now <ChevronRight className="ml-1 h-4 w-4" />
               </Link>
             </Button>
-            {/* Updated button with solid background color on hover */}
+            {/* Updated button with better hover color */}
             <Button
               size="lg"
-              className="bg-transparent border-2 border-white text-white hover:bg-purple-600 hover:border-purple-600 hover:text-white transition-all duration-300"
+              className="bg-transparent border-2 border-white text-white hover:bg-white/20 hover:border-white transition-all duration-300"
             >
               <Link href="/how-it-works" className="flex items-center">
                 How It Works <ChevronRight className="ml-1 h-4 w-4" />
@@ -113,7 +113,7 @@ export default function HeroSection() {
           </div>
 
           {/* Key benefits */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-2xl">
             <div className="flex items-center space-x-2">
               <div className="rounded-full bg-primary/20 p-2 backdrop-blur-sm">
                 <Home className="h-4 w-4 text-white" />
@@ -136,7 +136,7 @@ export default function HeroSection() {
         </motion.div>
 
         {/* Carousel indicators */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2">
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2">
           {slides.map((_, index) => (
             <button
               key={index}
