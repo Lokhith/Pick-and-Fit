@@ -356,6 +356,34 @@ export default function ShopPageClient() {
     }
   }
 
+  // Main categories for the shop page
+  const mainCategories = [
+    {
+      name: "Men",
+      image: "/mens-casual-tshirt-fashion.png",
+      href: "/men",
+      description: "Explore our collection of men's clothing, footwear, and accessories",
+    },
+    {
+      name: "Women",
+      image: "/women-casual-shirt-fashion.png",
+      href: "/women",
+      description: "Discover stylish women's fashion for every occasion",
+    },
+    {
+      name: "Kids",
+      image: "/stylish-kids.png",
+      href: "/kids",
+      description: "Find the perfect outfits for your little ones",
+    },
+    {
+      name: "Beauty",
+      image: "/facial-cleanser-product.png",
+      href: "/beauty",
+      description: "Shop premium skincare, makeup, and grooming products",
+    },
+  ]
+
   return (
     <div className="container py-12">
       {/* Hero Banner */}
@@ -381,26 +409,36 @@ export default function ShopPageClient() {
         </div>
       </div>
 
-      {/* Shop by Gender with Dropdowns in a single row */}
+      {/* Shop by Category */}
       <section className="mb-16">
-        <SectionTitle title="Shop by Gender" />
+        <SectionTitle title="Shop by Category" />
 
-        {/* Gender cards in a single row */}
-        <div className="flex flex-col sm:flex-row gap-4">
-          {categories.map((category) => (
-            <CategoryCard
-              key={category.name}
-              category={category}
-              isActive={activeCategory === category.name}
-              onClick={() => handleCategoryClick(category.name)}
-            />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {mainCategories.map((category) => (
+            <Link key={category.name} href={category.href} className="group">
+              <div className="relative overflow-hidden rounded-lg transition-all duration-300 shadow-md hover:shadow-xl transform hover:-translate-y-1">
+                <div className="relative aspect-square w-full overflow-hidden rounded-lg">
+                  <Image
+                    src={category.image || "/placeholder.svg"}
+                    alt={category.name}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-black/80 group-hover:via-black/40 transition-all duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white transform transition-transform duration-300">
+                    <h2 className="text-xl sm:text-2xl font-bold group-hover:text-primary-foreground transition-colors duration-300">
+                      {category.name}
+                    </h2>
+                    <p className="mt-1 text-sm sm:text-base text-white/80 group-hover:text-white transition-colors duration-300">
+                      {category.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </Link>
           ))}
         </div>
-
-        {/* Dropdowns below the cards */}
-        {categories.map((category) => (
-          <CategoryDropdown key={category.name} category={category} isOpen={activeCategory === category.name} />
-        ))}
       </section>
 
       {/* Try at Home Feature */}

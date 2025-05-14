@@ -1,4 +1,5 @@
 import HeroSection from "@/components/hero-section"
+import FlashDeals from "@/components/flash-deals"
 import FeaturedCategories from "@/components/featured-categories"
 import PopularProducts from "@/components/popular-products"
 import TryAtHomeFeature from "@/components/try-at-home-feature"
@@ -10,7 +11,8 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       <HeroSection />
-      <div className="py-16 flex flex-col gap-16">
+      <div className="py-4 flex flex-col gap-6">
+        <FlashDeals />
         <FeaturedCategories />
         <PopularProducts />
         <TryAtHomeFeature />

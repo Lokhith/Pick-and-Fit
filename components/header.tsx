@@ -26,7 +26,7 @@ import {
 const categories = [
   {
     name: "Men",
-    href: "/shop/men",
+    href: "/men", // Changed from "/shop/men" to "/men"
     subcategories: [
       {
         name: "Casual Wear",
@@ -119,7 +119,7 @@ const categories = [
   },
   {
     name: "Women",
-    href: "/shop/women",
+    href: "/women", // Changed from "/shop/women" to "/women"
     subcategories: [
       {
         name: "Formal Wear",
@@ -214,7 +214,7 @@ const categories = [
   },
   {
     name: "Kids",
-    href: "/shop/kids",
+    href: "/kids", // Changed from "/shop/kids" to "/kids"
     subcategories: [
       {
         name: "Boy",
@@ -242,7 +242,7 @@ const categories = [
   },
   {
     name: "Beauty",
-    href: "/shop/beauty",
+    href: "/beauty", // Changed from "/shop/beauty" to "/beauty"
     subcategories: [
       {
         name: "Skincare",
