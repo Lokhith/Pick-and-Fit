@@ -3,8 +3,6 @@ import FlashDeals from "@/components/flash-deals"
 import FeaturedCategories from "@/components/featured-categories"
 import TryAtHomeFeature from "@/components/try-at-home-feature"
 import Testimonials from "@/components/testimonials"
-import NewsletterSignup from "@/components/newsletter-signup"
-import SocialProof from "@/components/social-proof"
 
 export default function Home() {
   return (
@@ -15,12 +13,6 @@ export default function Home() {
         <FeaturedCategories />
         <TryAtHomeFeature />
         <Testimonials />
-        <div className="bg-gray-50 py-16">
-          <div className="container mx-auto px-4">
-            <NewsletterSignup />
-          </div>
-        </div>
-        <SocialProof />
       </div>
     </div>
   )
