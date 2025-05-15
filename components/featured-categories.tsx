@@ -128,22 +128,6 @@ export default function FeaturedCategories() {
             </Link>
           ))}
         </div>
-
-        {/* Enhanced CTA button */}
-        <div className="text-center mt-10">
-          <Button
-            variant="default"
-            size="lg"
-            className="font-medium relative overflow-hidden group bg-blue-600 hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl"
-            asChild
-          >
-            <Link href="/shop" className="flex items-center px-8 py-6">
-              <span className="relative z-10">Explore All Categories</span>
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 relative z-10" />
-              <div className="absolute inset-0 bg-white dark:bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-            </Link>
-          </Button>
-        </div>
       </div>
     </div>
   )
