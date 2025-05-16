@@ -1,15 +1,16 @@
 "use client"
 
+import type React from "react"
+
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Filter, Grid3X3, LayoutGrid } from "lucide-react"
+import { Filter, Grid3X3, LayoutGrid, ChevronDown, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Slider } from "@/components/ui/slider"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 // Mock product data (simplified version)
 const mockProducts = [
@@ -146,15 +147,60 @@ const categoryFilters = {
   "ethnic-festive": "Ethnic and Festive",
 }
 
+// Subcategory mappings
+const subcategoryMappings = {
+  "casual-wear": {
+    shirts: "Shirts",
+    pants: "Pants",
+    "t-shirts": "T-Shirts",
+    "jeans-jeggings": "Jeans & Jeggings",
+  },
+  "formal-wear": {
+    shirts: "Shirts",
+    pants: "Pants",
+    suits: "Suits",
+    blazers: "Blazers",
+  },
+  "oversized-fit": {
+    shirts: "Shirts",
+    pants: "Pants",
+    "polo-t-shirts": "Polo T-Shirts",
+    "round-neck-t-shirts": "Round Neck T-Shirts",
+    hoodies: "Hoodies",
+  },
+  innerwear: {
+    vests: "Vests",
+    "gym-vests": "Gym Vests",
+    briefs: "Briefs",
+    boxers: "Boxers",
+    trunks: "Trunks",
+  },
+  footwear: {
+    "casual-shoes": "Casual Shoes",
+    "sports-shoes": "Sports Shoes",
+    sandals: "Sandals",
+    "formal-shoes": "Formal Shoes",
+    loafers: "Loafers",
+  },
+  accessories: {
+    belts: "Belts",
+    wallets: "Wallets",
+    ties: "Ties",
+    socks: "Socks",
+    caps: "Caps",
+  },
+}
+
 export default function MenShopPage() {
   const [products, setProducts] = useState(mockProducts)
   const [filteredProducts, setFilteredProducts] = useState(mockProducts)
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
+  const [selectedSubcategories, setSelectedSubcategories] = useState<string[]>([])
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 5000])
   const [sortBy, setSortBy] = useState<string>("featured")
   const [isFilterOpen, setIsFilterOpen] = useState(false)
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
-  const [activeTab, setActiveTab] = useState<string>("all")
+  const [expandedCategories, setExpandedCategories] = useState<string[]>([])
 
   // Filter products based on selected criteria
   useEffect(() => {
@@ -163,14 +209,16 @@ export default function MenShopPage() {
     // Filter by gender (always men for this page)
     filtered = filtered.filter((product) => product.gender === "men")
 
-    // Filter by selected categories
-    if (selectedCategories.length > 0) {
-      filtered = filtered.filter((product) => selectedCategories.includes(product.category))
-    }
-
-    // Filter by active tab (if not "all")
-    if (activeTab !== "all") {
-      filtered = filtered.filter((product) => product.category === activeTab)
+    // Filter by selected categories and subcategories
+    if (selectedCategories.length > 0 || selectedSubcategories.length > 0) {
+      filtered = filtered.filter((product) => {
+        // If subcategories are selected, check if product matches any selected subcategory
+        if (selectedSubcategories.length > 0) {
+          return selectedSubcategories.includes(product.subcategory)
+        }
+        // Otherwise, check if product matches any selected category
+        return selectedCategories.includes(product.category)
+      })
     }
 
     // Filter by price range
@@ -187,20 +235,50 @@ export default function MenShopPage() {
     }
 
     setFilteredProducts(filtered)
-  }, [products, selectedCategories, priceRange, sortBy, activeTab])
+  }, [products, selectedCategories, selectedSubcategories, priceRange, sortBy])
 
   // Toggle category selection
   const toggleCategory = (category: string) => {
-    setSelectedCategories((prev) =>
-      prev.includes(category) ? prev.filter((item) => item !== category) : [...prev, category],
+    // Toggle category selection
+    const isSelected = selectedCategories.includes(category)
+
+    if (isSelected) {
+      // If deselecting, remove category and its subcategories
+      setSelectedCategories((prev) => prev.filter((c) => c !== category))
+      setSelectedSubcategories((prev) => {
+        const subcategories = subcategoryMappings[category as keyof typeof subcategoryMappings] || {}
+        return prev.filter((s) => !Object.keys(subcategories).includes(s))
+      })
+      // Also collapse the category
+      setExpandedCategories((prev) => prev.filter((c) => c !== category))
+    } else {
+      // If selecting, add category and expand it
+      setSelectedCategories((prev) => [...prev, category])
+      setExpandedCategories((prev) => [...prev, category])
+    }
+  }
+
+  // Toggle subcategory selection
+  const toggleSubcategory = (subcategory: string) => {
+    setSelectedSubcategories((prev) =>
+      prev.includes(subcategory) ? prev.filter((item) => item !== subcategory) : [...prev, subcategory],
+    )
+  }
+
+  // Toggle category expansion (show/hide subcategories)
+  const toggleCategoryExpansion = (category: string, event: React.MouseEvent) => {
+    event.stopPropagation()
+    setExpandedCategories((prev) =>
+      prev.includes(category) ? prev.filter((c) => c !== category) : [...prev, category],
     )
   }
 
   // Clear all filters
   const clearFilters = () => {
     setSelectedCategories([])
+    setSelectedSubcategories([])
     setPriceRange([0, 5000])
-    setActiveTab("all")
+    setExpandedCategories([])
   }
 
   return (
@@ -234,18 +312,6 @@ export default function MenShopPage() {
         </p>
       </div>
 
-      {/* Category Tabs */}
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-8">
-        <TabsList className="mb-4 flex w-full flex-wrap justify-start gap-2">
-          <TabsTrigger value="all">All Categories</TabsTrigger>
-          {Object.entries(categoryFilters).map(([key, value]) => (
-            <TabsTrigger key={key} value={key}>
-              {value}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-      </Tabs>
-
       {/* Mobile Filter Button */}
       <div className="flex items-center justify-between mb-6 md:hidden">
         <Sheet open={isFilterOpen} onOpenChange={setIsFilterOpen}>
@@ -271,15 +337,56 @@ export default function MenShopPage() {
                   <h3 className="text-sm font-semibold mb-3">Categories</h3>
                   <div className="space-y-2">
                     {Object.entries(categoryFilters).map(([key, value]) => (
-                      <div key={key} className="flex items-center">
-                        <Checkbox
-                          id={`mobile-${key}`}
-                          checked={selectedCategories.includes(key)}
-                          onCheckedChange={() => toggleCategory(key)}
-                        />
-                        <label htmlFor={`mobile-${key}`} className="ml-2 text-sm cursor-pointer">
-                          {value}
-                        </label>
+                      <div key={key} className="space-y-1">
+                        <div className="flex items-center">
+                          <Checkbox
+                            id={`mobile-${key}`}
+                            checked={selectedCategories.includes(key)}
+                            onCheckedChange={() => toggleCategory(key)}
+                            className="mr-2"
+                          />
+                          <label
+                            htmlFor={`mobile-${key}`}
+                            className="text-sm cursor-pointer flex-grow"
+                            onClick={() => toggleCategory(key)}
+                          >
+                            {value}
+                          </label>
+                          {subcategoryMappings[key as keyof typeof subcategoryMappings] && (
+                            <button
+                              onClick={(e) => toggleCategoryExpansion(key, e)}
+                              className="p-1 rounded-full hover:bg-muted"
+                            >
+                              {expandedCategories.includes(key) ? (
+                                <ChevronDown className="h-4 w-4" />
+                              ) : (
+                                <ChevronRight className="h-4 w-4" />
+                              )}
+                            </button>
+                          )}
+                        </div>
+
+                        {/* Subcategories */}
+                        {expandedCategories.includes(key) &&
+                          subcategoryMappings[key as keyof typeof subcategoryMappings] && (
+                            <div className="ml-6 space-y-1 mt-1 border-l-2 border-muted pl-2">
+                              {Object.entries(subcategoryMappings[key as keyof typeof subcategoryMappings]).map(
+                                ([subKey, subValue]) => (
+                                  <div key={subKey} className="flex items-center">
+                                    <Checkbox
+                                      id={`mobile-sub-${subKey}`}
+                                      checked={selectedSubcategories.includes(subKey)}
+                                      onCheckedChange={() => toggleSubcategory(subKey)}
+                                      className="mr-2"
+                                    />
+                                    <label htmlFor={`mobile-sub-${subKey}`} className="text-sm cursor-pointer">
+                                      {subValue}
+                                    </label>
+                                  </div>
+                                ),
+                              )}
+                            </div>
+                          )}
                       </div>
                     ))}
                   </div>
@@ -353,15 +460,59 @@ export default function MenShopPage() {
               <h3 className="text-sm font-semibold mb-3">Categories</h3>
               <div className="space-y-2">
                 {Object.entries(categoryFilters).map(([key, value]) => (
-                  <div key={key} className="flex items-center">
-                    <Checkbox
-                      id={key}
-                      checked={selectedCategories.includes(key)}
-                      onCheckedChange={() => toggleCategory(key)}
-                    />
-                    <label htmlFor={key} className="ml-2 text-sm cursor-pointer">
-                      {value}
-                    </label>
+                  <div key={key} className="space-y-1">
+                    <div className="flex items-center">
+                      <Checkbox
+                        id={key}
+                        checked={selectedCategories.includes(key)}
+                        onCheckedChange={() => toggleCategory(key)}
+                        className="mr-2"
+                      />
+                      <label
+                        htmlFor={key}
+                        className="text-sm cursor-pointer flex-grow"
+                        onClick={() => toggleCategory(key)}
+                      >
+                        {value}
+                      </label>
+                      {subcategoryMappings[key as keyof typeof subcategoryMappings] && (
+                        <button
+                          onClick={(e) => toggleCategoryExpansion(key, e)}
+                          className="p-1 rounded-full hover:bg-muted"
+                          aria-label={
+                            expandedCategories.includes(key) ? "Collapse subcategories" : "Expand subcategories"
+                          }
+                        >
+                          {expandedCategories.includes(key) ? (
+                            <ChevronDown className="h-4 w-4" />
+                          ) : (
+                            <ChevronRight className="h-4 w-4" />
+                          )}
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Subcategories */}
+                    {expandedCategories.includes(key) &&
+                      subcategoryMappings[key as keyof typeof subcategoryMappings] && (
+                        <div className="ml-6 space-y-1 mt-1 border-l-2 border-muted pl-2 animate-in fade-in-50 duration-300">
+                          {Object.entries(subcategoryMappings[key as keyof typeof subcategoryMappings]).map(
+                            ([subKey, subValue]) => (
+                              <div key={subKey} className="flex items-center">
+                                <Checkbox
+                                  id={`sub-${subKey}`}
+                                  checked={selectedSubcategories.includes(subKey)}
+                                  onCheckedChange={() => toggleSubcategory(subKey)}
+                                  className="mr-2"
+                                />
+                                <label htmlFor={`sub-${subKey}`} className="text-sm cursor-pointer">
+                                  {subValue}
+                                </label>
+                              </div>
+                            ),
+                          )}
+                        </div>
+                      )}
                   </div>
                 ))}
               </div>
@@ -416,6 +567,53 @@ export default function MenShopPage() {
             </div>
           </div>
 
+          {/* Active Filters */}
+          {(selectedCategories.length > 0 || selectedSubcategories.length > 0) && (
+            <div className="mb-6 flex flex-wrap gap-2">
+              {selectedCategories.map((category) => (
+                <div key={category} className="flex items-center bg-muted px-3 py-1 rounded-full text-sm">
+                  <span>{categoryFilters[category as keyof typeof categoryFilters]}</span>
+                  <button
+                    className="ml-2 focus:outline-none"
+                    onClick={() => toggleCategory(category)}
+                    aria-label={`Remove ${categoryFilters[category as keyof typeof categoryFilters]} filter`}
+                  >
+                    &times;
+                  </button>
+                </div>
+              ))}
+              {selectedSubcategories.map((subcategory) => {
+                // Find which category this subcategory belongs to
+                let subcategoryName = subcategory
+                for (const [category, subcats] of Object.entries(subcategoryMappings)) {
+                  if (subcats && subcategory in subcats) {
+                    subcategoryName = subcats[subcategory as keyof typeof subcats] as string
+                    break
+                  }
+                }
+
+                return (
+                  <div
+                    key={subcategory}
+                    className="flex items-center bg-muted-foreground/10 px-3 py-1 rounded-full text-sm"
+                  >
+                    <span>{subcategoryName}</span>
+                    <button
+                      className="ml-2 focus:outline-none"
+                      onClick={() => toggleSubcategory(subcategory)}
+                      aria-label={`Remove ${subcategoryName} filter`}
+                    >
+                      &times;
+                    </button>
+                  </div>
+                )
+              })}
+              <Button variant="ghost" size="sm" onClick={clearFilters} className="text-xs">
+                Clear All
+              </Button>
+            </div>
+          )}
+
           {filteredProducts.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-12">
               <p className="text-lg font-medium mb-4">No products found</p>
@@ -459,6 +657,12 @@ export default function MenShopPage() {
                           <p className="mt-1 font-medium">₹{product.price.toLocaleString("en-IN")}</p>
                           <p className="mt-2 text-sm text-muted-foreground">
                             {categoryFilters[product.category as keyof typeof categoryFilters]}
+                            {product.subcategory && " - "}
+                            {product.subcategory &&
+                              (subcategoryMappings[product.category as keyof typeof subcategoryMappings]?.[
+                                product.subcategory as keyof (typeof subcategoryMappings)[keyof typeof subcategoryMappings]
+                              ] ||
+                                product.subcategory)}
                           </p>
                         </CardContent>
                       </div>
