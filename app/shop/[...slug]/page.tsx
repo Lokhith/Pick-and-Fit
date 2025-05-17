@@ -15,7 +15,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 const mockProducts = [
   // Men's products
   {
-    id: 1,
+    id: "1",
     name: "Classic White Shirt",
     price: 1299,
     image: "/mens-white-shirt-fashion.png",
@@ -24,7 +24,7 @@ const mockProducts = [
     gender: "men",
   },
   {
-    id: 2,
+    id: "2",
     name: "Slim Fit Jeans",
     price: 1499,
     image: "/mens-slim-fit-jeans.png",
@@ -33,7 +33,7 @@ const mockProducts = [
     gender: "men",
   },
   {
-    id: 3,
+    id: "3",
     name: "Casual T-Shirt",
     price: 799,
     image: "/mens-casual-tshirt-fashion.png",
@@ -42,7 +42,7 @@ const mockProducts = [
     gender: "men",
   },
   {
-    id: 4,
+    id: "4",
     name: "Formal Shirt",
     price: 1599,
     image: "/mens-formal-shirt-fashion.png",
@@ -51,7 +51,7 @@ const mockProducts = [
     gender: "men",
   },
   {
-    id: 5,
+    id: "5",
     name: "Formal Pants",
     price: 1899,
     image: "/mens-formal-pants-fashion.png",
@@ -60,7 +60,7 @@ const mockProducts = [
     gender: "men",
   },
   {
-    id: 6,
+    id: "6",
     name: "Oversized Shirt",
     price: 1399,
     image: "/mens-oversized-shirt-fashion.png",
@@ -69,7 +69,7 @@ const mockProducts = [
     gender: "men",
   },
   {
-    id: 7,
+    id: "7",
     name: "Oversized Pants",
     price: 1699,
     image: "/mens-baggy-pants-fashion.png",
@@ -78,7 +78,7 @@ const mockProducts = [
     gender: "men",
   },
   {
-    id: 8,
+    id: "8",
     name: "Polo T-Shirt",
     price: 999,
     image: "/placeholder.svg?key=kww7e",
@@ -87,7 +87,7 @@ const mockProducts = [
     gender: "men",
   },
   {
-    id: 9,
+    id: "9",
     name: "Round Neck T-Shirt",
     price: 899,
     image: "/men-round-neck-t-shirt.png",
@@ -96,7 +96,7 @@ const mockProducts = [
     gender: "men",
   },
   {
-    id: 10,
+    id: "10",
     name: "Oversized Hoodie",
     price: 1899,
     image: "/men-oversized-hoodie.png",
@@ -105,7 +105,7 @@ const mockProducts = [
     gender: "men",
   },
   {
-    id: 11,
+    id: "11",
     name: "Vest",
     price: 499,
     image: "/men-white-vest-innerwear.png",
@@ -114,7 +114,7 @@ const mockProducts = [
     gender: "men",
   },
   {
-    id: 12,
+    id: "12",
     name: "Gym Vest",
     price: 599,
     image: "/men-gym-tank-top.png",
@@ -123,7 +123,7 @@ const mockProducts = [
     gender: "men",
   },
   {
-    id: 13,
+    id: "13",
     name: "Briefs",
     price: 399,
     image: "/men-briefs-fashion.png",
@@ -134,7 +134,7 @@ const mockProducts = [
 
   // Women's products
   {
-    id: 14,
+    id: "14",
     name: "Formal Shirt",
     price: 1499,
     image: "/formal-shirt-business-woman.png",
@@ -143,16 +143,7 @@ const mockProducts = [
     gender: "women",
   },
   {
-    id: 15,
-    name: "Formal Pants",
-    price: 1799,
-    image: "/formal-pants-business-fashion.png",
-    category: "formal-wear",
-    subcategory: "pants",
-    gender: "women",
-  },
-  {
-    id: 16,
+    id: "15",
     name: "Casual Shirt",
     price: 1299,
     image: "/women-casual-shirt-fashion.png",
@@ -161,7 +152,7 @@ const mockProducts = [
     gender: "women",
   },
   {
-    id: 17,
+    id: "16",
     name: "Casual Pants",
     price: 1399,
     image: "/placeholder.svg?key=3shue",
@@ -170,7 +161,7 @@ const mockProducts = [
     gender: "women",
   },
   {
-    id: 18,
+    id: "17",
     name: "Casual T-Shirt",
     price: 899,
     image: "/casual-tshirt-fashion.png",
@@ -179,7 +170,7 @@ const mockProducts = [
     gender: "women",
   },
   {
-    id: 19,
+    id: "18",
     name: "Oversized Shirt",
     price: 1399,
     image: "/oversized-shirt-fashion.png",
@@ -188,7 +179,7 @@ const mockProducts = [
     gender: "women",
   },
   {
-    id: 20,
+    id: "19",
     name: "Oversized Pants",
     price: 1599,
     image: "/oversized-pants-fashion.png",
@@ -197,7 +188,7 @@ const mockProducts = [
     gender: "women",
   },
   {
-    id: 21,
+    id: "20",
     name: "Polo T-Shirt",
     price: 999,
     image: "/women-polo-fashion.png",
@@ -206,7 +197,7 @@ const mockProducts = [
     gender: "women",
   },
   {
-    id: 22,
+    id: "21",
     name: "Round Neck T-Shirt",
     price: 899,
     image: "/women-round-neck-t-shirt.png",
@@ -215,7 +206,7 @@ const mockProducts = [
     gender: "women",
   },
   {
-    id: 23,
+    id: "22",
     name: "Oversized Hoodie",
     price: 1799,
     image: "/oversized-hoodie-fashion.png",
@@ -224,7 +215,7 @@ const mockProducts = [
     gender: "women",
   },
   {
-    id: 24,
+    id: "23",
     name: "Bra",
     price: 799,
     image: "/lingerie-fashion-photography.png",
@@ -233,97 +224,97 @@ const mockProducts = [
     gender: "women",
   },
   {
-    id: 25,
+    id: "24",
     name: "Panties",
     price: 499,
-    image: "/placeholder.svg?height=400&width=300&query=women%20panties%20lingerie%20fashion%20photography",
+    image: "/lingerie-fashion-photography.png",
     category: "lingerie-innerwear",
     subcategory: "panties",
     gender: "women",
   },
   {
-    id: 26,
+    id: "25",
     name: "Casual Shoes",
     price: 1999,
-    image: "/placeholder.svg?height=400&width=300&query=women%20casual%20shoes%20fashion%20photography",
+    image: "/women-casual-shoes-fashion.png",
     category: "footwear",
     subcategory: "casual-shoes",
     gender: "women",
   },
   {
-    id: 27,
+    id: "26",
     name: "Sport Shoes",
     price: 2499,
-    image: "/placeholder.svg?height=400&width=300&query=women%20sport%20shoes%20athletic%20fashion%20photography",
+    image: "/athletic-fashion-women.png",
     category: "footwear",
     subcategory: "sport-shoes",
     gender: "women",
   },
   {
-    id: 28,
+    id: "27",
     name: "Flip Flops",
     price: 699,
-    image: "/placeholder.svg?height=400&width=300&query=women%20flip%20flops%20fashion%20photography",
+    image: "/women-flip-flops-fashion.png",
     category: "footwear",
     subcategory: "flip-flops-slippers",
     gender: "women",
   },
   {
-    id: 29,
+    id: "28",
     name: "Heeled Sandals",
     price: 1899,
-    image: "/placeholder.svg?height=400&width=300&query=women%20heeled%20sandals%20fashion%20photography",
+    image: "/heeled-sandals-fashion.png",
     category: "footwear",
     subcategory: "heeled-sandals",
     gender: "women",
   },
   {
-    id: 30,
+    id: "29",
     name: "Heeled Shoes",
     price: 2299,
-    image: "/placeholder.svg?height=400&width=300&query=women%20heeled%20shoes%20fashion%20photography",
+    image: "/heeled-shoes-fashion.png",
     category: "footwear",
     subcategory: "heeled-shoes",
     gender: "women",
   },
   {
-    id: 31,
+    id: "30",
     name: "Sunglasses",
     price: 1299,
-    image: "/placeholder.svg?height=400&width=300&query=women%20sunglasses%20fashion%20photography",
+    image: "/fashionable-woman-sunglasses.png",
     category: "accessories",
     subcategory: "sunglasses",
     gender: "women",
   },
   {
-    id: 32,
+    id: "31",
     name: "Wristwatch",
     price: 2499,
-    image: "/placeholder.svg?height=400&width=300&query=women%20wristwatch%20fashion%20photography",
+    image: "/wristwatch-fashion.png",
     category: "accessories",
     subcategory: "watches",
     gender: "women",
   },
   {
-    id: 33,
+    id: "32",
     name: "Handbag",
     price: 1899,
-    image: "/placeholder.svg?height=400&width=300&query=women%20handbag%20fashion%20photography",
+    image: "/stylish-handbag-shoot.png",
     category: "accessories",
     subcategory: "bags",
     gender: "women",
   },
   {
-    id: 34,
+    id: "33",
     name: "Leather Wallet",
     price: 999,
-    image: "/placeholder.svg?height=400&width=300&query=women%20leather%20wallet%20fashion%20photography",
+    image: "/women-leather-wallet-fashion.png",
     category: "accessories",
     subcategory: "belts-wallets",
     gender: "women",
   },
   {
-    id: 35,
+    id: "34",
     name: "Patterned Socks",
     price: 399,
     image: "/placeholder.svg?height=400&width=300&query=women%20patterned%20socks%20fashion%20photography",
@@ -332,7 +323,7 @@ const mockProducts = [
     gender: "women",
   },
   {
-    id: 36,
+    id: "35",
     name: "Fashion Top",
     price: 1199,
     image: "/placeholder.svg?height=400&width=300&query=women%20fashion%20top%20fashion%20photography",
@@ -341,7 +332,7 @@ const mockProducts = [
     gender: "women",
   },
   {
-    id: 37,
+    id: "36",
     name: "Skinny Jeans",
     price: 1699,
     image: "/placeholder.svg?height=400&width=300&query=women%20skinny%20jeans%20fashion%20photography",
@@ -350,7 +341,7 @@ const mockProducts = [
     gender: "women",
   },
   {
-    id: 38,
+    id: "37",
     name: "Pleated Skirt",
     price: 1299,
     image: "/placeholder.svg?height=400&width=300&query=women%20pleated%20skirt%20fashion%20photography",
@@ -359,7 +350,7 @@ const mockProducts = [
     gender: "women",
   },
   {
-    id: 39,
+    id: "38",
     name: "Winter Jacket",
     price: 2999,
     image: "/placeholder.svg?height=400&width=300&query=women%20winter%20jacket%20fashion%20photography",
@@ -368,7 +359,7 @@ const mockProducts = [
     gender: "women",
   },
   {
-    id: 40,
+    id: "39",
     name: "Knit Sweater",
     price: 1799,
     image: "/placeholder.svg?height=400&width=300&query=women%20knit%20sweater%20fashion%20photography",
@@ -377,7 +368,7 @@ const mockProducts = [
     gender: "women",
   },
   {
-    id: 41,
+    id: "40",
     name: "Silk Kurta",
     price: 2499,
     image: "/placeholder.svg?height=400&width=300&query=women%20silk%20kurta%20indian%20fashion%20photography",
@@ -386,7 +377,7 @@ const mockProducts = [
     gender: "women",
   },
   {
-    id: 42,
+    id: "41",
     name: "Cotton Churidar",
     price: 1299,
     image: "/placeholder.svg?height=400&width=300&query=women%20cotton%20churidar%20indian%20fashion%20photography",
@@ -395,7 +386,7 @@ const mockProducts = [
     gender: "women",
   },
   {
-    id: 43,
+    id: "42",
     name: "Embroidered Kurti",
     price: 1899,
     image: "/placeholder.svg?height=400&width=300&query=women%20embroidered%20kurti%20indian%20fashion%20photography",
@@ -404,7 +395,7 @@ const mockProducts = [
     gender: "women",
   },
   {
-    id: 44,
+    id: "43",
     name: "Silk Saree",
     price: 4999,
     image: "/placeholder.svg?height=400&width=300&query=women%20silk%20saree%20indian%20fashion%20photography",
@@ -413,7 +404,7 @@ const mockProducts = [
     gender: "women",
   },
   {
-    id: 45,
+    id: "44",
     name: "Embroidered Dupatta",
     price: 1299,
     image: "/placeholder.svg?height=400&width=300&query=women%20embroidered%20dupatta%20indian%20fashion%20photography",
@@ -422,7 +413,7 @@ const mockProducts = [
     gender: "women",
   },
   {
-    id: 46,
+    id: "45",
     name: "Diwali Special Dress",
     price: 3499,
     image:
@@ -433,7 +424,7 @@ const mockProducts = [
   },
   // Kids - Boy products
   {
-    id: 47,
+    id: "46",
     name: "Boys Cotton T-Shirt",
     price: 499,
     image: "/placeholder.svg?height=400&width=300&query=boys%20cotton%20t-shirt%20fashion%20photography",
@@ -443,7 +434,7 @@ const mockProducts = [
     kidGender: "boy",
   },
   {
-    id: 48,
+    id: "47",
     name: "Boys Jeans",
     price: 799,
     image: "/placeholder.svg?height=400&width=300&query=boys%20jeans%20fashion%20photography",
@@ -453,7 +444,7 @@ const mockProducts = [
     kidGender: "boy",
   },
   {
-    id: 49,
+    id: "48",
     name: "Boys Cotton Vest",
     price: 299,
     image: "/placeholder.svg?height=400&width=300&query=boys%20cotton%20vest%20innerwear%20fashion%20photography",
@@ -463,7 +454,7 @@ const mockProducts = [
     kidGender: "boy",
   },
   {
-    id: 50,
+    id: "49",
     name: "Boys Sports Shoes",
     price: 999,
     image: "/placeholder.svg?height=400&width=300&query=boys%20sports%20shoes%20fashion%20photography",
@@ -473,7 +464,7 @@ const mockProducts = [
     kidGender: "boy",
   },
   {
-    id: 51,
+    id: "50",
     name: "Boys Kurta Set",
     price: 1299,
     image:
@@ -486,7 +477,7 @@ const mockProducts = [
 
   // Kids - Girl products
   {
-    id: 52,
+    id: "51",
     name: "Girls Floral Dress",
     price: 799,
     image: "/placeholder.svg?height=400&width=300&query=girls%20floral%20dress%20fashion%20photography",
@@ -496,7 +487,7 @@ const mockProducts = [
     kidGender: "girl",
   },
   {
-    id: 53,
+    id: "52",
     name: "Girls Cotton T-Shirt",
     price: 499,
     image: "/placeholder.svg?height=400&width=300&query=girls%20cotton%20t-shirt%20fashion%20photography",
@@ -506,7 +497,7 @@ const mockProducts = [
     kidGender: "girl",
   },
   {
-    id: 54,
+    id: "53",
     name: "Girls Nightwear Set",
     price: 699,
     image: "/placeholder.svg?height=400&width=300&query=girls%20nightwear%20pajama%20set%20fashion%20photography",
@@ -516,7 +507,7 @@ const mockProducts = [
     kidGender: "girl",
   },
   {
-    id: 55,
+    id: "54",
     name: "Girls Sandals",
     price: 599,
     image: "/placeholder.svg?height=400&width=300&query=girls%20sandals%20footwear%20fashion%20photography",
@@ -526,7 +517,7 @@ const mockProducts = [
     kidGender: "girl",
   },
   {
-    id: 56,
+    id: "55",
     name: "Girls Lehenga",
     price: 1499,
     image: "/placeholder.svg?height=400&width=300&query=girls%20lehenga%20indian%20traditional%20fashion%20photography",
@@ -538,7 +529,7 @@ const mockProducts = [
   // Add these beauty products to the mockProducts array
   // Beauty products - Skincare
   {
-    id: 57,
+    id: "56",
     name: "Gentle Facial Cleanser",
     price: 599,
     image: "/facial-cleanser-product.png",
@@ -547,7 +538,7 @@ const mockProducts = [
     gender: "beauty",
   },
   {
-    id: 58,
+    id: "57",
     name: "Hydrating Moisturizer",
     price: 799,
     image: "/moisturizer-skincare-product.png",
@@ -556,7 +547,7 @@ const mockProducts = [
     gender: "beauty",
   },
   {
-    id: 59,
+    id: "58",
     name: "Vitamin C Serum",
     price: 1299,
     image: "/vitamin-c-serum-product.png",
@@ -565,7 +556,7 @@ const mockProducts = [
     gender: "beauty",
   },
   {
-    id: 60,
+    id: "59",
     name: "SPF 50 Sunscreen",
     price: 699,
     image: "/placeholder.svg?height=400&width=300&query=spf%2050%20sunscreen%20skincare%20product%20photography",
@@ -574,7 +565,7 @@ const mockProducts = [
     gender: "beauty",
   },
   {
-    id: 61,
+    id: "60",
     name: "Anti-Aging Eye Cream",
     price: 899,
     image: "/placeholder.svg?height=400&width=300&query=anti-aging%20eye%20cream%20skincare%20product%20photography",
@@ -583,7 +574,7 @@ const mockProducts = [
     gender: "beauty",
   },
   {
-    id: 62,
+    id: "61",
     name: "Nourishing Lip Balm",
     price: 299,
     image: "/placeholder.svg?height=400&width=300&query=nourishing%20lip%20balm%20skincare%20product%20photography",
@@ -594,7 +585,7 @@ const mockProducts = [
 
   // Beauty products - Makeup
   {
-    id: 63,
+    id: "62",
     name: "Matte Lipstick",
     price: 599,
     image: "/matte-lipstick-product.png",
@@ -603,7 +594,7 @@ const mockProducts = [
     gender: "beauty",
   },
   {
-    id: 64,
+    id: "63",
     name: "Shimmery Lip Gloss",
     price: 499,
     image: "/placeholder.svg?height=400&width=300&query=shimmery%20lip%20gloss%20makeup%20product%20photography",
@@ -612,7 +603,7 @@ const mockProducts = [
     gender: "beauty",
   },
   {
-    id: 65,
+    id: "64",
     name: "Tinted Lip Balm",
     price: 399,
     image: "/placeholder.svg?height=400&width=300&query=tinted%20lip%20balm%20makeup%20product%20photography",
@@ -621,7 +612,7 @@ const mockProducts = [
     gender: "beauty",
   },
   {
-    id: 66,
+    id: "65",
     name: "Nail Polish Set",
     price: 799,
     image: "/placeholder.svg?height=400&width=300&query=nail%20polish%20set%20makeup%20product%20photography",
@@ -630,7 +621,7 @@ const mockProducts = [
     gender: "beauty",
   },
   {
-    id: 67,
+    id: "66",
     name: "Volumizing Mascara",
     price: 699,
     image: "/placeholder.svg?height=400&width=300&query=volumizing%20mascara%20makeup%20product%20photography",
@@ -639,7 +630,7 @@ const mockProducts = [
     gender: "beauty",
   },
   {
-    id: 68,
+    id: "67",
     name: "Waterproof Eyeliner",
     price: 499,
     image: "/placeholder.svg?height=400&width=300&query=waterproof%20eyeliner%20makeup%20product%20photography",
@@ -648,7 +639,7 @@ const mockProducts = [
     gender: "beauty",
   },
   {
-    id: 69,
+    id: "68",
     name: "Liquid Foundation",
     price: 899,
     image: "/placeholder.svg?height=400&width=300&query=liquid%20foundation%20makeup%20product%20photography",
@@ -659,7 +650,7 @@ const mockProducts = [
 
   // Beauty products - Haircare
   {
-    id: 70,
+    id: "69",
     name: "Anti-Dandruff Shampoo",
     price: 499,
     image: "/shampoo-haircare-product.png",
@@ -668,7 +659,7 @@ const mockProducts = [
     gender: "beauty",
   },
   {
-    id: 71,
+    id: "70",
     name: "Moisturizing Conditioner",
     price: 549,
     image: "/placeholder.svg?height=400&width=300&query=moisturizing%20conditioner%20haircare%20product%20photography",
@@ -677,7 +668,7 @@ const mockProducts = [
     gender: "beauty",
   },
   {
-    id: 72,
+    id: "71",
     name: "Argan Hair Oil",
     price: 699,
     image: "/placeholder.svg?height=400&width=300&query=argan%20hair%20oil%20haircare%20product%20photography",
@@ -686,7 +677,7 @@ const mockProducts = [
     gender: "beauty",
   },
   {
-    id: 73,
+    id: "72",
     name: "Ammonia-Free Hair Color",
     price: 899,
     image: "/placeholder.svg?height=400&width=300&query=ammonia-free%20hair%20color%20haircare%20product%20photography",
@@ -695,7 +686,7 @@ const mockProducts = [
     gender: "beauty",
   },
   {
-    id: 74,
+    id: "73",
     name: "Hair Styling Gel",
     price: 399,
     image: "/placeholder.svg?height=400&width=300&query=hair%20styling%20gel%20haircare%20product%20photography",
@@ -706,7 +697,7 @@ const mockProducts = [
 
   // Beauty products - Fragrances
   {
-    id: 75,
+    id: "74",
     name: "Floral Perfume",
     price: 1499,
     image: "/placeholder.svg?height=400&width=300&query=floral%20perfume%20fragrance%20product%20photography",
@@ -715,7 +706,7 @@ const mockProducts = [
     gender: "beauty",
   },
   {
-    id: 76,
+    id: "75",
     name: "Long-lasting Deodorant",
     price: 299,
     image: "/placeholder.svg?height=400&width=300&query=long-lasting%20deodorant%20fragrance%20product%20photography",
@@ -726,7 +717,7 @@ const mockProducts = [
 
   // Beauty products - Bath and Body
   {
-    id: 77,
+    id: "76",
     name: "Exfoliating Face Wash",
     price: 399,
     image:
@@ -736,7 +727,7 @@ const mockProducts = [
     gender: "beauty",
   },
   {
-    id: 78,
+    id: "77",
     name: "Moisturizing Body Wash",
     price: 449,
     image:
@@ -746,7 +737,7 @@ const mockProducts = [
     gender: "beauty",
   },
   {
-    id: 79,
+    id: "78",
     name: "Coffee Body Scrub",
     price: 599,
     image: "/placeholder.svg?height=400&width=300&query=coffee%20body%20scrub%20bath%20body%20product%20photography",
@@ -757,7 +748,7 @@ const mockProducts = [
 
   // Beauty products - Men Grooming
   {
-    id: 80,
+    id: "79",
     name: "Shaving Cream",
     price: 349,
     image: "/placeholder.svg?height=400&width=300&query=shaving%20cream%20men%20grooming%20product%20photography",
@@ -766,7 +757,7 @@ const mockProducts = [
     gender: "beauty",
   },
   {
-    id: 81,
+    id: "80",
     name: "Beard Oil",
     price: 499,
     image: "/beard-oil-product.png",
@@ -775,7 +766,7 @@ const mockProducts = [
     gender: "beauty",
   },
   {
-    id: 82,
+    id: "81",
     name: "Hair Wax",
     price: 399,
     image: "/placeholder.svg?height=400&width=300&query=hair%20wax%20men%20grooming%20product%20photography",
@@ -784,7 +775,7 @@ const mockProducts = [
     gender: "beauty",
   },
   {
-    id: 83,
+    id: "82",
     name: "Men's Deodorant",
     price: 299,
     image: "/placeholder.svg?height=400&width=300&query=mens%20deodorant%20men%20grooming%20product%20photography",
@@ -935,10 +926,6 @@ const getCategoryName = (slug: string) => {
     bottoms: "Bottoms",
     sets: "Sets",
     underwear: "Underwear",
-    vests: "Vests",
-    nightwear: "Nightwear",
-    toys: "Toys",
-    "babycare-products": "Babycare Products",
     "casual-shoes": "Casual Shoes",
     "sports-shoes": "Sport Shoes",
     sandals: "Sandals",
@@ -1136,7 +1123,7 @@ export default function ShopPage() {
       filtered.sort((a, b) => b.price - a.price)
     } else if (sortBy === "newest") {
       // In a real app, you would sort by date
-      filtered.sort((a, b) => b.id - a.id)
+      filtered.sort((a, b) => b.id.localeCompare(a.id))
     }
 
     setFilteredProducts(filtered)

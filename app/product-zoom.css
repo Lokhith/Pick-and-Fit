@@ -1,0 +1,30 @@
+/* Cursor styles */
+.cursor-zoom-in {
+  cursor: zoom-in;
+}
+
+/* Ensure the zoom lens is properly styled */
+[ref="zoomLensRef"] {
+  z-index: 10;
+  background-repeat: no-repeat;
+}
+
+/* Modal animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fixed {
+  animation: fadeIn 0.2s ease;
+}
+
+/* Make sure images in the modal can be properly viewed */
+.max-w-5xl img {
+  max-height: 80vh;
+  max-width: 100%;
+}
