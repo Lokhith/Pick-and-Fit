@@ -1,16 +1,15 @@
 "use client"
 
-import type React from "react"
-
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Filter, Grid3X3, LayoutGrid, ChevronDown, ChevronRight } from "lucide-react"
+import { ChevronDown, Filter, Grid3X3, LayoutGrid } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Slider } from "@/components/ui/slider"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { cn } from "@/lib/utils"
 
 // Mock product data (simplified version)
 const mockProducts = [
@@ -82,7 +81,7 @@ const mockProducts = [
     id: 8,
     name: "Polo T-Shirt",
     price: 999,
-    image: "/placeholder.svg?key=lbwjl",
+    image: "/classic-polo-shirt.png",
     category: "oversized-fit",
     subcategory: "polo-t-shirts",
     gender: "men",
@@ -189,18 +188,44 @@ const subcategoryMappings = {
     socks: "Socks",
     caps: "Caps",
   },
+  "western-wear": {
+    "jackets-coats": "Jackets & Coats",
+    jeans: "Jeans",
+    "shorts-3-4ths": "Shorts & 3/4ths",
+    "sweatshirts-hoodies": "Sweatshirts & Hoodies",
+    "track-pants": "Track Pants",
+    boxers: "Boxers",
+  },
+  "night-lounge-wear": {
+    "night-suits": "Night Suits",
+    pyjamas: "Pyjamas",
+    "lounge-pants": "Lounge Pants",
+    "lounge-tshirts": "Lounge T-Shirts",
+  },
+  "ethnic-festive": {
+    dhotis: "Dhotis",
+    shirts: "Shirts",
+    kurtas: "Kurtas",
+    "kurta-sets": "Kurta Sets",
+  },
+}
+
+// Type for selected subcategories that includes the parent category
+type SelectedSubcategory = {
+  parent: string
+  key: string
 }
 
 export default function MenShopPage() {
   const [products, setProducts] = useState(mockProducts)
   const [filteredProducts, setFilteredProducts] = useState(mockProducts)
+  const [expandedCategories, setExpandedCategories] = useState<string[]>([])
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
-  const [selectedSubcategories, setSelectedSubcategories] = useState<string[]>([])
+  const [selectedSubcategories, setSelectedSubcategories] = useState<SelectedSubcategory[]>([])
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 5000])
   const [sortBy, setSortBy] = useState<string>("featured")
   const [isFilterOpen, setIsFilterOpen] = useState(false)
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
-  const [expandedCategories, setExpandedCategories] = useState<string[]>([])
 
   // Filter products based on selected criteria
   useEffect(() => {
@@ -209,20 +234,34 @@ export default function MenShopPage() {
     // Filter by gender (always men for this page)
     filtered = filtered.filter((product) => product.gender === "men")
 
-    // Filter by selected categories and subcategories
-    if (selectedCategories.length > 0 || selectedSubcategories.length > 0) {
-      filtered = filtered.filter((product) => {
-        // If subcategories are selected, check if product matches any selected subcategory
-        if (selectedSubcategories.length > 0) {
-          return selectedSubcategories.includes(product.subcategory)
-        }
-        // Otherwise, check if product matches any selected category
-        return selectedCategories.includes(product.category)
-      })
-    }
-
     // Filter by price range
     filtered = filtered.filter((product) => product.price >= priceRange[0] && product.price <= priceRange[1])
+
+    // Apply category and subcategory filters
+    if (selectedCategories.length > 0) {
+      // Create a map to track which categories have selected subcategories
+      const categoriesWithSelectedSubs = new Set<string>()
+      selectedSubcategories.forEach((sub) => {
+        categoriesWithSelectedSubs.add(sub.parent)
+      })
+
+      // Filter products based on categories and subcategories
+      filtered = filtered.filter((product) => {
+        // If the product's category is selected
+        if (selectedCategories.includes(product.category)) {
+          // If this category has selected subcategories
+          if (categoriesWithSelectedSubs.has(product.category)) {
+            // Check if the product's subcategory is one of the selected ones for this category
+            return selectedSubcategories.some(
+              (sub) => sub.parent === product.category && sub.key === product.subcategory,
+            )
+          }
+          // If no subcategories are selected for this category, include all products from this category
+          return true
+        }
+        return false
+      })
+    }
 
     // Sort products
     if (sortBy === "price-low-high") {
@@ -237,39 +276,62 @@ export default function MenShopPage() {
     setFilteredProducts(filtered)
   }, [products, selectedCategories, selectedSubcategories, priceRange, sortBy])
 
+  // Toggle category expansion
+  const toggleCategoryExpansion = (category: string) => {
+    setExpandedCategories((prev) =>
+      prev.includes(category) ? prev.filter((c) => c !== category) : [...prev, category],
+    )
+  }
+
   // Toggle category selection
   const toggleCategory = (category: string) => {
-    // Toggle category selection
-    const isSelected = selectedCategories.includes(category)
+    // Toggle the category selection
+    const newSelectedCategories = selectedCategories.includes(category)
+      ? selectedCategories.filter((c) => c !== category)
+      : [...selectedCategories, category]
 
-    if (isSelected) {
-      // If deselecting, remove category and its subcategories
-      setSelectedCategories((prev) => prev.filter((c) => c !== category))
-      setSelectedSubcategories((prev) => {
-        const subcategories = subcategoryMappings[category as keyof typeof subcategoryMappings] || {}
-        return prev.filter((s) => !Object.keys(subcategories).includes(s))
-      })
-      // Also collapse the category
-      setExpandedCategories((prev) => prev.filter((c) => c !== category))
-    } else {
-      // If selecting, add category and expand it
-      setSelectedCategories((prev) => [...prev, category])
+    setSelectedCategories(newSelectedCategories)
+
+    // If the category is being deselected, remove all its subcategories
+    if (selectedCategories.includes(category)) {
+      setSelectedSubcategories((prev) => prev.filter((sub) => sub.parent !== category))
+    }
+
+    // Toggle expansion when selecting/deselecting
+    if (!expandedCategories.includes(category) && !selectedCategories.includes(category)) {
       setExpandedCategories((prev) => [...prev, category])
     }
   }
 
   // Toggle subcategory selection
-  const toggleSubcategory = (subcategory: string) => {
-    setSelectedSubcategories((prev) =>
-      prev.includes(subcategory) ? prev.filter((item) => item !== subcategory) : [...prev, subcategory],
-    )
+  const toggleSubcategory = (parent: string, key: string) => {
+    const isSelected = isSubcategorySelected(parent, key)
+
+    if (isSelected) {
+      // Remove the subcategory
+      setSelectedSubcategories((prev) => prev.filter((sub) => !(sub.parent === parent && sub.key === key)))
+    } else {
+      // Add the subcategory
+      setSelectedSubcategories((prev) => [...prev, { parent, key }])
+
+      // Make sure the parent category is selected
+      if (!selectedCategories.includes(parent)) {
+        setSelectedCategories((prev) => [...prev, parent])
+      }
+    }
   }
 
-  // Toggle category expansion (show/hide subcategories)
-  const toggleCategoryExpansion = (category: string, event: React.MouseEvent) => {
-    event.stopPropagation()
-    setExpandedCategories((prev) =>
-      prev.includes(category) ? prev.filter((c) => c !== category) : [...prev, category],
+  // Helper function to check if a subcategory is selected
+  const isSubcategorySelected = (parent: string, key: string) => {
+    return selectedSubcategories.some((sub) => sub.parent === parent && sub.key === key)
+  }
+
+  // Get subcategory display name
+  const getSubcategoryDisplayName = (parent: string, key: string) => {
+    return (
+      subcategoryMappings[parent as keyof typeof subcategoryMappings]?.[
+        key as keyof (typeof subcategoryMappings)[keyof typeof subcategoryMappings]
+      ] || key
     )
   }
 
@@ -278,7 +340,6 @@ export default function MenShopPage() {
     setSelectedCategories([])
     setSelectedSubcategories([])
     setPriceRange([0, 5000])
-    setExpandedCategories([])
   }
 
   return (
@@ -337,56 +398,54 @@ export default function MenShopPage() {
                   <h3 className="text-sm font-semibold mb-3">Categories</h3>
                   <div className="space-y-2">
                     {Object.entries(categoryFilters).map(([key, value]) => (
-                      <div key={key} className="space-y-1">
-                        <div className="flex items-center">
-                          <Checkbox
-                            id={`mobile-${key}`}
-                            checked={selectedCategories.includes(key)}
-                            onCheckedChange={() => toggleCategory(key)}
-                            className="mr-2"
-                          />
-                          <label
-                            htmlFor={`mobile-${key}`}
-                            className="text-sm cursor-pointer flex-grow"
-                            onClick={() => toggleCategory(key)}
-                          >
-                            {value}
-                          </label>
-                          {subcategoryMappings[key as keyof typeof subcategoryMappings] && (
+                      <div key={key} className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center">
+                            <Checkbox
+                              id={`mobile-${key}`}
+                              checked={selectedCategories.includes(key)}
+                              onCheckedChange={() => toggleCategory(key)}
+                            />
+                            <label htmlFor={`mobile-${key}`} className="ml-2 text-sm cursor-pointer">
+                              {value}
+                            </label>
+                          </div>
+                          {Object.keys(subcategoryMappings[key as keyof typeof subcategoryMappings] || {}).length >
+                            0 && (
                             <button
-                              onClick={(e) => toggleCategoryExpansion(key, e)}
+                              onClick={() => toggleCategoryExpansion(key)}
                               className="p-1 rounded-full hover:bg-muted"
+                              aria-label={expandedCategories.includes(key) ? "Collapse" : "Expand"}
                             >
-                              {expandedCategories.includes(key) ? (
-                                <ChevronDown className="h-4 w-4" />
-                              ) : (
-                                <ChevronRight className="h-4 w-4" />
-                              )}
+                              <ChevronDown
+                                className={cn(
+                                  "h-4 w-4 transition-transform",
+                                  expandedCategories.includes(key) ? "transform rotate-180" : "",
+                                )}
+                              />
                             </button>
                           )}
                         </div>
 
                         {/* Subcategories */}
-                        {expandedCategories.includes(key) &&
-                          subcategoryMappings[key as keyof typeof subcategoryMappings] && (
-                            <div className="ml-6 space-y-1 mt-1 border-l-2 border-muted pl-2">
-                              {Object.entries(subcategoryMappings[key as keyof typeof subcategoryMappings]).map(
-                                ([subKey, subValue]) => (
-                                  <div key={subKey} className="flex items-center">
-                                    <Checkbox
-                                      id={`mobile-sub-${subKey}`}
-                                      checked={selectedSubcategories.includes(subKey)}
-                                      onCheckedChange={() => toggleSubcategory(subKey)}
-                                      className="mr-2"
-                                    />
-                                    <label htmlFor={`mobile-sub-${subKey}`} className="text-sm cursor-pointer">
-                                      {subValue}
-                                    </label>
-                                  </div>
-                                ),
-                              )}
-                            </div>
-                          )}
+                        {expandedCategories.includes(key) && (
+                          <div className="pl-6 space-y-1 border-l-2 border-muted ml-1.5">
+                            {Object.entries(subcategoryMappings[key as keyof typeof subcategoryMappings] || {}).map(
+                              ([subKey, subValue]) => (
+                                <div key={subKey} className="flex items-center">
+                                  <Checkbox
+                                    id={`mobile-${key}-${subKey}`}
+                                    checked={isSubcategorySelected(key, subKey)}
+                                    onCheckedChange={() => toggleSubcategory(key, subKey)}
+                                  />
+                                  <label htmlFor={`mobile-${key}-${subKey}`} className="ml-2 text-sm cursor-pointer">
+                                    {subValue}
+                                  </label>
+                                </div>
+                              ),
+                            )}
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>
@@ -460,59 +519,53 @@ export default function MenShopPage() {
               <h3 className="text-sm font-semibold mb-3">Categories</h3>
               <div className="space-y-2">
                 {Object.entries(categoryFilters).map(([key, value]) => (
-                  <div key={key} className="space-y-1">
-                    <div className="flex items-center">
-                      <Checkbox
-                        id={key}
-                        checked={selectedCategories.includes(key)}
-                        onCheckedChange={() => toggleCategory(key)}
-                        className="mr-2"
-                      />
-                      <label
-                        htmlFor={key}
-                        className="text-sm cursor-pointer flex-grow"
-                        onClick={() => toggleCategory(key)}
-                      >
-                        {value}
-                      </label>
-                      {subcategoryMappings[key as keyof typeof subcategoryMappings] && (
+                  <div key={key} className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        <Checkbox
+                          id={key}
+                          checked={selectedCategories.includes(key)}
+                          onCheckedChange={() => toggleCategory(key)}
+                        />
+                        <label htmlFor={key} className="ml-2 text-sm cursor-pointer">
+                          {value}
+                        </label>
+                      </div>
+                      {Object.keys(subcategoryMappings[key as keyof typeof subcategoryMappings] || {}).length > 0 && (
                         <button
-                          onClick={(e) => toggleCategoryExpansion(key, e)}
+                          onClick={() => toggleCategoryExpansion(key)}
                           className="p-1 rounded-full hover:bg-muted"
-                          aria-label={
-                            expandedCategories.includes(key) ? "Collapse subcategories" : "Expand subcategories"
-                          }
+                          aria-label={expandedCategories.includes(key) ? "Collapse" : "Expand"}
                         >
-                          {expandedCategories.includes(key) ? (
-                            <ChevronDown className="h-4 w-4" />
-                          ) : (
-                            <ChevronRight className="h-4 w-4" />
-                          )}
+                          <ChevronDown
+                            className={cn(
+                              "h-4 w-4 transition-transform",
+                              expandedCategories.includes(key) ? "transform rotate-180" : "",
+                            )}
+                          />
                         </button>
                       )}
                     </div>
 
                     {/* Subcategories */}
-                    {expandedCategories.includes(key) &&
-                      subcategoryMappings[key as keyof typeof subcategoryMappings] && (
-                        <div className="ml-6 space-y-1 mt-1 border-l-2 border-muted pl-2 animate-in fade-in-50 duration-300">
-                          {Object.entries(subcategoryMappings[key as keyof typeof subcategoryMappings]).map(
-                            ([subKey, subValue]) => (
-                              <div key={subKey} className="flex items-center">
-                                <Checkbox
-                                  id={`sub-${subKey}`}
-                                  checked={selectedSubcategories.includes(subKey)}
-                                  onCheckedChange={() => toggleSubcategory(subKey)}
-                                  className="mr-2"
-                                />
-                                <label htmlFor={`sub-${subKey}`} className="text-sm cursor-pointer">
-                                  {subValue}
-                                </label>
-                              </div>
-                            ),
-                          )}
-                        </div>
-                      )}
+                    {expandedCategories.includes(key) && (
+                      <div className="pl-6 space-y-1 border-l-2 border-muted ml-1.5">
+                        {Object.entries(subcategoryMappings[key as keyof typeof subcategoryMappings] || {}).map(
+                          ([subKey, subValue]) => (
+                            <div key={subKey} className="flex items-center">
+                              <Checkbox
+                                id={`${key}-${subKey}`}
+                                checked={isSubcategorySelected(key, subKey)}
+                                onCheckedChange={() => toggleSubcategory(key, subKey)}
+                              />
+                              <label htmlFor={`${key}-${subKey}`} className="ml-2 text-sm cursor-pointer">
+                                {subValue}
+                              </label>
+                            </div>
+                          ),
+                        )}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
@@ -570,37 +623,35 @@ export default function MenShopPage() {
           {/* Active Filters */}
           {(selectedCategories.length > 0 || selectedSubcategories.length > 0) && (
             <div className="mb-6 flex flex-wrap gap-2">
-              {selectedCategories.map((category) => (
-                <div key={category} className="flex items-center bg-muted px-3 py-1 rounded-full text-sm">
-                  <span>{categoryFilters[category as keyof typeof categoryFilters]}</span>
-                  <button
-                    className="ml-2 focus:outline-none"
-                    onClick={() => toggleCategory(category)}
-                    aria-label={`Remove ${categoryFilters[category as keyof typeof categoryFilters]} filter`}
-                  >
-                    &times;
-                  </button>
-                </div>
-              ))}
-              {selectedSubcategories.map((subcategory) => {
-                // Find which category this subcategory belongs to
-                let subcategoryName = subcategory
-                for (const [category, subcats] of Object.entries(subcategoryMappings)) {
-                  if (subcats && subcategory in subcats) {
-                    subcategoryName = subcats[subcategory as keyof typeof subcats] as string
-                    break
-                  }
-                }
+              {selectedCategories
+                .filter((category) => !selectedSubcategories.some((sub) => sub.parent === category))
+                .map((category) => (
+                  <div key={category} className="flex items-center bg-muted px-3 py-1 rounded-full text-sm">
+                    <span>{categoryFilters[category as keyof typeof categoryFilters]}</span>
+                    <button
+                      className="ml-2 focus:outline-none"
+                      onClick={() => toggleCategory(category)}
+                      aria-label={`Remove ${categoryFilters[category as keyof typeof categoryFilters]} filter`}
+                    >
+                      &times;
+                    </button>
+                  </div>
+                ))}
+              {selectedSubcategories.map((sub) => {
+                const categoryName = categoryFilters[sub.parent as keyof typeof categoryFilters]
+                const subcategoryName = getSubcategoryDisplayName(sub.parent, sub.key)
 
                 return (
                   <div
-                    key={subcategory}
+                    key={`${sub.parent}-${sub.key}`}
                     className="flex items-center bg-muted-foreground/10 px-3 py-1 rounded-full text-sm"
                   >
-                    <span>{subcategoryName}</span>
+                    <span>
+                      {categoryName}: {subcategoryName}
+                    </span>
                     <button
                       className="ml-2 focus:outline-none"
-                      onClick={() => toggleSubcategory(subcategory)}
+                      onClick={() => toggleSubcategory(sub.parent, sub.key)}
                       aria-label={`Remove ${subcategoryName} filter`}
                     >
                       &times;
@@ -658,11 +709,7 @@ export default function MenShopPage() {
                           <p className="mt-2 text-sm text-muted-foreground">
                             {categoryFilters[product.category as keyof typeof categoryFilters]}
                             {product.subcategory && " - "}
-                            {product.subcategory &&
-                              (subcategoryMappings[product.category as keyof typeof subcategoryMappings]?.[
-                                product.subcategory as keyof (typeof subcategoryMappings)[keyof typeof subcategoryMappings]
-                              ] ||
-                                product.subcategory)}
+                            {product.subcategory && getSubcategoryDisplayName(product.category, product.subcategory)}
                           </p>
                         </CardContent>
                       </div>

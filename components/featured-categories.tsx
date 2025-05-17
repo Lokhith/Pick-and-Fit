@@ -2,8 +2,6 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import RibbonOfferTag from "@/components/ribbon-offer-tag"
 import "../app/category-animations.css"
 
