@@ -8,6 +8,7 @@ import Link from "next/link"
 import { Heart, ShoppingBag, Star, Truck, ArrowRight, ZoomIn } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 import type { Product } from "@/lib/product-data"
 import "../../../app/product-zoom.css"
 
@@ -18,6 +19,7 @@ interface ProductDetailClientProps {
 
 export default function ProductDetailClient({ product, relatedProducts }: ProductDetailClientProps) {
   const [selectedSize, setSelectedSize] = useState<string | null>(null)
+  const [selectedColor, setSelectedColor] = useState<string | null>(null)
   const [quantity, setQuantity] = useState(1)
   const [isZoomed, setIsZoomed] = useState(false)
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 })
@@ -27,6 +29,10 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
 
   const handleSizeSelect = (size: string) => {
     setSelectedSize(size)
+  }
+
+  const handleColorSelect = (color: string) => {
+    setSelectedColor(color)
   }
 
   const handleQuantityChange = (newQuantity: number) => {
@@ -181,23 +187,64 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
 
           <p className="text-muted-foreground mb-4">{product.shortDescription}</p>
 
-          {/* Size Selection */}
-          <div className="mb-4">
-            <h3 className="text-sm font-medium mb-2">Select Size</h3>
-            <div className="flex flex-wrap gap-2">
-              {["XS", "S", "M", "L", "XL", "XXL"].map((size) => (
-                <button
-                  key={size}
-                  className={`px-4 py-2 border rounded-md ${
-                    selectedSize === size ? "border-black bg-black text-white" : "border-gray-300 hover:border-gray-400"
-                  }`}
-                  onClick={() => handleSizeSelect(size)}
-                >
-                  {size}
-                </button>
-              ))}
+          {/* Brand and Material (if available) */}
+          {product.brand && (
+            <div className="mb-4">
+              <span className="font-medium">Brand: </span>
+              <span>{product.brand}</span>
             </div>
-          </div>
+          )}
+
+          {product.material && (
+            <div className="mb-4">
+              <span className="font-medium">Material: </span>
+              <span>{product.material}</span>
+            </div>
+          )}
+
+          {/* Size Selection */}
+          {product.sizes && product.sizes.length > 0 && (
+            <div className="mb-4">
+              <h3 className="text-sm font-medium mb-2">Select Size</h3>
+              <div className="flex flex-wrap gap-2">
+                {product.sizes.map((size) => (
+                  <button
+                    key={size}
+                    className={`px-4 py-2 border rounded-md ${
+                      selectedSize === size
+                        ? "border-black bg-black text-white"
+                        : "border-gray-300 hover:border-gray-400"
+                    }`}
+                    onClick={() => handleSizeSelect(size)}
+                  >
+                    {size}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Color Selection */}
+          {product.colors && product.colors.length > 0 && (
+            <div className="mb-4">
+              <h3 className="text-sm font-medium mb-2">Select Color</h3>
+              <div className="flex flex-wrap gap-2">
+                {product.colors.map((color) => (
+                  <button
+                    key={color}
+                    className={`px-4 py-2 border rounded-md ${
+                      selectedColor === color
+                        ? "border-black bg-black text-white"
+                        : "border-gray-300 hover:border-gray-400"
+                    }`}
+                    onClick={() => handleColorSelect(color)}
+                  >
+                    {color}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Quantity Selection */}
           <div className="mb-4">
@@ -229,16 +276,37 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
             </Button>
           </div>
 
+          {/* Tags */}
+          {product.tags && product.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-4">
+              {product.tags.map((tag, index) => (
+                <Badge key={index} variant="secondary">
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+          )}
+
           {/* Delivery Info */}
-          <div className="bg-gray-50 p-3 rounded-lg mb-4">
-            <div className="flex items-start gap-3">
-              <Truck className="h-5 w-5 mt-0.5 text-muted-foreground" />
-              <div>
-                <h4 className="font-medium">Free Delivery</h4>
-                <p className="text-sm text-muted-foreground">Enter your postal code for delivery availability</p>
+          {product.deliveryInfo && (
+            <div className="bg-gray-50 p-3 rounded-lg mb-4">
+              <div className="flex items-start gap-3">
+                <Truck className="h-5 w-5 mt-0.5 text-muted-foreground" />
+                <div>
+                  <h4 className="font-medium">Delivery Information</h4>
+                  <p className="text-sm text-muted-foreground">{product.deliveryInfo}</p>
+                </div>
               </div>
             </div>
-          </div>
+          )}
+
+          {/* Return Policy */}
+          {product.returnPolicy && (
+            <div className="mb-4">
+              <h4 className="font-medium">Return Policy</h4>
+              <p className="text-sm text-muted-foreground">{product.returnPolicy}</p>
+            </div>
+          )}
 
           {/* Product Description */}
           <div className="border-t pt-6">
@@ -248,43 +316,81 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
         </div>
       </div>
 
-      {/* Related Products */}
-      <div className="mt-8">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-bold">You May Also Like</h2>
-          <Link href="/shop" className="text-sm font-medium flex items-center gap-1 hover:underline">
-            View All <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
+      {/* Additional Product Information */}
+      {(product.features || product.careInstructions) && (
+        <div className="mb-8">
+          <h3 className="text-xl font-bold mb-4">Product Details</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Features */}
+            {product.features && product.features.length > 0 && (
+              <div>
+                <h4 className="font-medium mb-2">Features</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  {product.features.map((feature, index) => (
+                    <li key={index} className="text-muted-foreground">
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {relatedProducts.map((relatedProduct) => (
-            <Link key={relatedProduct.id} href={`/product/${relatedProduct.id}`}>
-              <Card className="overflow-hidden h-full hover:shadow-md transition-shadow">
-                <div className="relative aspect-square">
-                  <Image
-                    src={relatedProduct.image || "/placeholder.svg"}
-                    alt={relatedProduct.name}
-                    fill
-                    className="object-cover"
-                    onError={handleImageError}
-                  />
-                </div>
-                <CardContent className="p-3">
-                  <h3 className="font-medium text-sm line-clamp-1">{relatedProduct.name}</h3>
-                  <div className="flex items-center justify-between mt-1">
-                    <span className="font-medium text-sm">₹{relatedProduct.price.toLocaleString()}</span>
-                    <div className="flex items-center gap-1">
-                      <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-                      <span className="text-xs">{relatedProduct.rating}</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
+            {/* Care Instructions */}
+            {product.careInstructions && product.careInstructions.length > 0 && (
+              <div>
+                <h4 className="font-medium mb-2">Care Instructions</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  {product.careInstructions.map((instruction, index) => (
+                    <li key={index} className="text-muted-foreground">
+                      {instruction}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      )}
+
+      {/* Related Products */}
+      {relatedProducts && relatedProducts.length > 0 && (
+        <div className="mt-8">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl font-bold">You May Also Like</h2>
+            <Link href="/shop" className="text-sm font-medium flex items-center gap-1 hover:underline">
+              View All <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {relatedProducts.map((relatedProduct) => (
+              <Link key={relatedProduct.id} href={`/product/${relatedProduct.id}`}>
+                <Card className="overflow-hidden h-full hover:shadow-md transition-shadow">
+                  <div className="relative aspect-square">
+                    <Image
+                      src={relatedProduct.image || "/placeholder.svg"}
+                      alt={relatedProduct.name}
+                      fill
+                      className="object-cover"
+                      onError={handleImageError}
+                    />
+                  </div>
+                  <CardContent className="p-3">
+                    <h3 className="font-medium text-sm line-clamp-1">{relatedProduct.name}</h3>
+                    <div className="flex items-center justify-between mt-1">
+                      <span className="font-medium text-sm">₹{relatedProduct.price.toLocaleString()}</span>
+                      <div className="flex items-center gap-1">
+                        <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                        <span className="text-xs">{relatedProduct.rating}</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Zoom Modal */}
       {showZoomModal && (
